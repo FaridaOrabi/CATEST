@@ -1,8 +1,18 @@
 <div class="container">
-    <h1>Progress {{ progress }} / {{ length }}</h1>
-    <p>Question: {{ id }}</p>
-    <p>Difficulty: {{ diff }}</p>
-    <form action="/test/go" method="post">
-    <button type="submit">Next</button>
+    <h3>Question {{ t.progress }} of {{ t.length }}</h3>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{t.progress}}" aria-valuemin="0" aria-valuemax="{{t.length}}" style="width: {{t.percent}}%"></div>
+    </div>
+    <h2 class="border">{{ q.question }}</h2>
+    <p>Difficulty: <span class="badge badge-danger badge-pill">{{ q.difficulty }}</span></p>
+    <form action="/test/next" method="post">
+    <ul class="list-group">
+    {{#each q.options}}
+        <li class="list-group-item">
+            <input type="radio" name="choice" id="choice" value="{{this}}"> {{this}}
+        </li>
+    {{/each}}
+    </ul>
+    <button class="btn btn-warning" type="submit">Next</button>
     </form>
 </div>

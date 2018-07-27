@@ -18,6 +18,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
+hbs.registerHelper('plusone', i => {return Number(i) + 1});
+
 
 app.use(logger('dev'));
 app.use(express.json());

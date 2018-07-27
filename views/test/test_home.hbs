@@ -1,8 +1,10 @@
 <div class="container">
-    <h1>Test Page</h1>
-
-    Click here to start a test
-    <form action="/test/go" method="get">
-    <button type="submit">START</button>
+    <h1>Start your test</h1>
+    <form action="/test/setTestParams" method="post">
+    <div class="form-grow row">
+    <label for="testdiff" class="col-sm-1 col-form-label">Difficulty:</label>
+    <input type="range" class="custom-range" id="testdiff" name="testdiff" min="1" max="4"  style="width: 25%">
+    <button class="btn btn-outline-primary btn-block"type="submit" style="margin-top: 3rem">START</button>
+    </div>
     </form>
 </div>
