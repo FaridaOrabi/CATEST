@@ -8,12 +8,12 @@ router.get('/', function(req, res) {
 });
 
 router.post('/setTestParams', (req, res) => {
-
-    var t = TestFactory.init(5, java_qbnk);
+    var l = Number(req.body.testlength);
+    var t = TestFactory.init(l, java_qbnk);
     var diff = Number(req.body.testdiff);
     req.session.test = t;
     t.currentDiff = Number(diff);
-    console.log(t);
+
     res.redirect('/test/go');
 });
 
@@ -32,12 +32,18 @@ router.post('/next', (req, res) =>
     var t = req.session.test,
         c = req.body.choice;
     TestFactory.answerLastQuestion(t, c); //set user choice
+    var q = TestFactory.getLastQuestion(t);
+
+    if(q.isCorrect)
+        t.currentDiff = TestFactory.upperDiff(t, t.currentDiff) || t.currentDiff;
+    else 
+        t.currentDiff = TestFactory.lowerDiff(t, t.currentDiff) || t.currentDiff;
 
     if(t.progress == t.length)
-    {
         res.redirect('result');
-    }
-    else res.redirect('go');
+    else
+        res.redirect('go');
+
 });
 
 router.get('/result', (req, res)  =>

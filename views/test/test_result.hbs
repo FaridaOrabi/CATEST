@@ -1,29 +1,26 @@
-
-
 <div class="container border">
-    <h1><i class="fas fa-book"></i> Report card</h1>
+    <h1>
+        <i class="fas fa-book"></i> Report card</h1>
     <h2>SCORE {{t.score}} / {{t.length}}</h2>
     {{#each picked}}
-    <p>{{plusone @index}}. {{this.question}}
-    {{#if this.isCorrect}}
-    <i class="fas fa-check"></i>
-    {{else}}
-    <i class="fas fa-times-circle"></i>
-    {{/if}}
+    <p>{{plusone @index}}. {{this.question}} {{#if this.isCorrect}}
+        <i class="fas fa-check"></i>
+        {{else}}
+        <i class="fas fa-times-circle"></i>
+        {{/if}}
     </p>
     {{#unless this.isCorrect}}
-    {{!-- <strong>Explaination:</strong><p>{{this.explain}}</p> --}}
     <p>
-        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExplain{{@index}}" aria-expanded="false" aria-controls="collapseExplain{{@index}}">
-        Explain
+        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExplain{{@index}}" aria-expanded="false"
+            aria-controls="collapseExplain{{@index}}">
+            Explain
         </button>
     </p>
     <div class="collapse" id="collapseExplain{{@index}}">
         <div class="card card-body">
-            {{this.explain}} 
+            {{this.explain}}
         </div>
     </div>
     {{/unless}}
-    <hr>
-    {{/each}}
+    <hr> {{/each}}
 </div>
