@@ -32,18 +32,20 @@ router.get('/go', (req, res) =>
 {
     var t = req.session.test;
     var q = TestFactory.pickQuestion(req.session.test, t.currentDiff);
+
+    t.Tick = Date.now();
     t.progress++;
     t.percent = (t.progress / t.length) * 100;
     res.render('test/test_live', { t, q });
-    
 });
 
 router.post('/next', (req, res) =>
 {
     var t = req.session.test,
         c = req.body.choice;
-    TestFactory.answerLastQuestion(t, c); //set user choice
+    TestFactory.answerLastQuestion(t, c); // set user choice
     var q = TestFactory.getLastQuestion(t);
+    q.time = (Date.now() - t.Tick) / 1000; // log thinking time
 
     if(q.isCorrect)
         t.currentDiff = TestFactory.upperDiff(t, t.currentDiff) || t.currentDiff;
