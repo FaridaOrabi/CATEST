@@ -3,12 +3,23 @@ var router = express.Router();
 
 var TestFactory = require('../alg/statictest').Test;
 
+function readJSON(filename)
+{
+    // console.log('Reading a file....');
+    // return JSON.parse(fs.readFileSync(filename, 'utf-8'));
+    return require(filename);
+}
+
 router.get('/', function(req, res) {
     res.render('test/test_home');
 });
 
 router.post('/setTestParams', (req, res) => {
     var l = Number(req.body.testlength);
+    var java_qbnk = readJSON('../alg/java_quiz.json');
+
+    console.log(java_qbnk);
+
     var t = TestFactory.init(l, java_qbnk);
     var diff = Number(req.body.testdiff);
     req.session.test = t;
