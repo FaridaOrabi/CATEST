@@ -4,10 +4,12 @@
         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{t.progress}}" aria-valuemin="0"
             aria-valuemax="{{t.length}}" style="width: {{t.percent}}%"></div>
     </div>
+
     <h2 class="border">{{ q.question }}</h2>
-    <p>Difficulty:
-        <span class="badge badge-danger badge-pill">{{ q.difficulty }}</span>
-    </p>
+            <p>Difficulty:
+                <span class="badge badge-danger badge-pill">{{ q.difficulty }}</span>
+            </p>
+
     <form action="/test/next" method="post">
         <ul class="list-group">
             {{#each q.options}}
@@ -16,6 +18,34 @@
             </li>
             {{/each}}
         </ul>
-        <button class="btn btn-warning" type="submit">Next</button>
+        <button class="btn btn-warning" type="submit" id="btnNext">Next</button>
     </form>
+    <p id='timer'>0:0</p>
 </div>
+
+<script>
+    var timer = document.getElementById('timer'),
+	btnNext = document.getElementById('btnNext'),
+	epoch = Date.now(),
+	timerWarn = 10,
+    timerOut = 20;
+
+setInterval(timeTick, 1000);
+
+timer.style.fontFamily = 'Orbitron';
+timer.style.fontSize = '72px';
+
+function timeTick() {
+	var s = (Date.now() - epoch) / 1000,
+		seconds = Math.floor(s % 60),
+		minutes = Math.floor(s / 60);
+	timer.innerText = minutes + ':' + seconds;
+
+    if(s > timerOut)
+		btnNext.click();
+	else if(s > timerWarn)
+		timer.style.color = 'red';
+	
+
+}
+</script>
