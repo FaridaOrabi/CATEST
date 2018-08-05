@@ -1,0 +1,159 @@
+{
+  "questions": [
+    {
+      "statement": "Which of these is long data type literal?",
+      "options": [
+        "0x99fffL",
+        "ABCDEFG",
+        "0x99fffa",
+        "99671246"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "0x99fffL"
+      ],
+      "explain": "Data type long literals are appended by an upper or lowercase L. 0x99fffL is hexadecimal long literal.",
+      "difficulty": 3
+    },
+    {
+      "statement": "Which of these can be returned by the operator & ?",
+      "options": [
+        "Integer",
+        "Boolean",
+        "Character",
+        "Integer or Boolean"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Integer or Boolean"
+      ],
+      "explain": "We can use binary ampersand operator on integers/chars (and it returns an integer) or on booleans (and it returns a boolean).",
+      "difficulty": 1
+    },
+    {
+      "statement": "Literals in java must be appended by which of these?",
+      "options": [
+        "L",
+        "l",
+        "D",
+        "L and I"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "L and I"
+      ],
+      "explain": "Data type long literals are appended by an upper or lowercase L.",
+      "difficulty": 1
+    },
+    {
+      "statement": "Literal can be of which of these data types?",
+      "options": [
+        "integer",
+        "float",
+        "boolean",
+        "all of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "all of the mentioned"
+      ],
+      "explain": "None",
+      "difficulty": 2
+    },
+    {
+      "statement": "Which of these can not be used for a variable name in Java?",
+      "options": [
+        "identifier",
+        "keyword",
+        "identifier & keyword",
+        "none of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "keyword"
+      ],
+      "explain": "Keywords are specially reserved words which can not be used for naming a user defined variable, example : class, int, for etc.",
+      "difficulty": 1
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "38",
+        "39",
+        "40",
+        "41"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "40"
+      ],
+      "explain": "None",
+      "imgURL": "img/test/Java/1-6-6.png",
+      "difficulty": 3
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "0 2 4 6 8",
+        "1 2 3 4 5",
+        "0 1 2 3 4 5 6 7 8 9",
+        "1 2 3 4 5 6 7 8 9 10"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "1 2 3 4 5"
+      ],
+      "explain": "When an array is declared using new operator then all of its elements are initialized to 0 automatically. for loop body is executed 5 times as whenever controls comes in the loop i value is incremented twice, first by i++ in body of loop then by ++i in increment condition of for loop.",
+      "imgURL": "img/test/Java/1-6-7.png",
+      "difficulty": 4
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "5 6 5 6",
+        "5 6 5",
+        "Runtime error",
+        "Compilation error"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Compilation error"
+      ],
+      "explain": "Second print statement doesn’t have access to y , scope y was limited to the block defined after initialization of x.",
+      "imgURL": "img/test/Java/1-6-8.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "Which of these is incorrect string literal?",
+      "options": [
+        "“Hello World”",
+        "“Hello",
+        "“”Hello World””",
+        "“Hello"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "“Hello"
+      ],
+      "explain": "all string literals must begin and end in same line.",
+      "difficulty": 4
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "5.0",
+        "25.0",
+        "7.0",
+        "Compilation Error"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "5.0"
+      ],
+      "explain": "Variable c has been dynamically initialized to square root of a * a + b * b, during run time.",
+      "imgURL": "img/test/Java/1-6-10.png",
+      "difficulty": 2
+    }
+  ],
+  "title": "Literals & Variables"
+}

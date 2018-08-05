@@ -1,0 +1,160 @@
+{
+  "questions": [
+    {
+      "statement": "What is the numerical range of a char data type in Java?",
+      "options": [
+        "-128 to 127",
+        "0 to 256",
+        "0 to 32767",
+        "0 to 65535"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "0 to 65535"
+      ],
+      "explain": "Char occupies 16-bit in memory, so it supports 2^16 i:e from 0 to 65535.",
+      "difficulty": 2
+    },
+    {
+      "statement": "Which of these coding types is used for data type characters in Java?",
+      "options": [
+        "ASCII",
+        "ISO-LATIN-1",
+        "UNICODE",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "UNICODE"
+      ],
+      "explain": "Unicode defines fully international character set that can represent all the characters found in all human languages. Its range is from 0 to 65536.",
+      "difficulty": 4
+    },
+    {
+      "statement": "Which of these values can a boolean variable contain?",
+      "options": [
+        "True & False",
+        "0 & 1",
+        "Any integer value",
+        "true"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "True & False"
+      ],
+      "explain": "Boolean variable can contain only one of two possible values, true and false.",
+      "difficulty": 1
+    },
+    {
+      "statement": "Which of these occupy first 0 to 127 in Unicode character set used for characters in Java?",
+      "options": [
+        "ASCII",
+        "ISO-LATIN-1",
+        "None of the mentioned",
+        "ASCII and ISO-LATIN1"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "ASCII and ISO-LATIN1"
+      ],
+      "explain": "First 0 to 127 character set in Unicode are same as those of ISO-LATIN-1 and ASCII.",
+      "difficulty": 4
+    },
+    {
+      "statement": "Which one is a valid declaration of a boolean?",
+      "options": [
+        "boolean b1 = 1;",
+        "boolean b2 = ‘false’;",
+        "boolean b3 = false;",
+        "boolean b4 = ‘true’"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "boolean b3 = false;"
+      ],
+      "explain": "Boolean can only be assigned true or false literals.",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "i i i i i",
+        "0 1 2 3 4",
+        "i j k l m",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "i i i i i"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/1-2-6.png",
+      "difficulty": 3
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "66",
+        "67",
+        "65",
+        "64"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "66"
+      ],
+      "explain": "ASCII value of ‘A’ is 65, on using ++ operator character value increments by one.",
+      "imgURL": "img/test/Java/1-2-7.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "0",
+        "1",
+        "true",
+        "false"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "true"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/1-2-8.png",
+      "difficulty": 3
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "0",
+        "1",
+        "true",
+        "false"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "false"
+      ],
+      "explain": "boolean ‘&’ operator always returns true or false. var1 is defined true and var2 is defined false hence their ‘&’ operator result is false.",
+      "imgURL": "img/test/Java/1-2-9.png",
+      "difficulty": 2
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "162",
+        "65 97",
+        "67 95",
+        "66 98"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "65 97"
+      ],
+      "explain": "ASCII code for ‘A’ is 65 and for ‘a’ is 97.",
+      "imgURL": "img/test/Java/1-2-10.png",
+      "difficulty": 4
+    }
+  ],
+  "title": "Character and Boolean Data Types"
+}

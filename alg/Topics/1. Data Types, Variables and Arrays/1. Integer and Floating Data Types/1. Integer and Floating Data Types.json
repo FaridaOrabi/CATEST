@@ -1,0 +1,160 @@
+{
+  "questions": [
+    {
+      "statement": "What is the range of short data type in Java?",
+      "options": [
+        "-128 to 127",
+        "-32768 to 32767",
+        "-2147483648 to 2147483647",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "-32768 to 32767"
+      ],
+      "explain": "Short occupies 16 bits in memory. Its range is from -32768 to 32767.",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the range of byte data type in Java?",
+      "options": [
+        "-128 to 127",
+        "-32768 to 32767",
+        "-2147483648 to 2147483647",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "-128 to 127"
+      ],
+      "explain": "Byte occupies 8 bits in memory. Its range is from -128 to 127.",
+      "difficulty": 3
+    },
+    {
+      "statement": "Which of the following are legal lines of Java code?",
+      "options": [
+        "1 and 2",
+        "2 and 3",
+        "3 and 4",
+        "All statements are correct."
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "All statements are correct."
+      ],
+      "explain": "Statements (1), (2), (3), and (4) are correct. (1) is correct because when a floating-point number (a double in this case) is cast to an int, it simply loses the digits after the decimal.(2) and (4) are correct because a long can be cast into a byte. If the long is over 127, it loses its most significant (leftmost) bits.(3) actually works, even though a cast is not necessary, because a long can store a byte.",
+      "imgURL": "img/test/Java/1-1-3.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "An expression involving byte, int, and literal numbers is promoted to which of these?",
+      "options": [
+        "int",
+        "long",
+        "byte",
+        "float"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "int"
+      ],
+      "explain": "An expression involving bytes, ints, shorts, literal numbers, the entire expression is promoted to int before any calculation is done.",
+      "difficulty": 3
+    },
+    {
+      "statement": "Which of these literals can be contained in float data type variable?",
+      "options": [
+        "-1.7e+308",
+        "-3.4e+038",
+        "+1.7e+308",
+        "-3.4e+050"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "-3.4e+038"
+      ],
+      "explain": "Range of float data type is -(3.4e38) To +(3.4e38)",
+      "difficulty": 2
+    },
+    {
+      "statement": "Which data type value is returned by all transcendental math functions?",
+      "options": [
+        "int",
+        "float",
+        "double",
+        "long"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "double"
+      ],
+      "explain": "None.",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "16.34",
+        "16.566666644",
+        "16.46666666666667",
+        "16.46666666666666"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "16.46666666666667"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/1-1-7.png",
+      "difficulty": 1
+    },
+    {
+      "statement": "What will be the output of these statement?",
+      "options": [
+        "Infinity",
+        "0.0",
+        "NaN",
+        "all of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "all of the mentioned"
+      ],
+      "explain": "For floating point literals, we have constant value to represent (10/0.0) infinity either positive or negative and also have NaN (not a number for undefined like 0/0.0), but for the integral type, we don’t have any constant that’s why we get an arithmetic exception.",
+      "imgURL": "img/test/Java/1-1-8.png",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "25",
+        "24",
+        "32",
+        "33"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "32"
+      ],
+      "explain": "Operator ++ has more preference than *, thus g becomes 4 and when multiplied by 8 gives 32.",
+      "imgURL": "img/test/Java/1-1-9.png",
+      "difficulty": 4
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "301.5656",
+        "301",
+        "301.56",
+        "301.56560000"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "301.5656"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/1-1-10.png",
+      "difficulty": 4
+    }
+  ],
+  "title": "Integer and Floating Data Types"
+}
