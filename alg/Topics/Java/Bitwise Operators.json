@@ -1,0 +1,160 @@
+{
+  "title": "Bitwise Operators",
+  "questions": [
+    {
+      "statement": "Which of these is not a bitwise operator?",
+      "options": [
+        "&",
+        "&=",
+        "|=",
+        "<="
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "<="
+      ],
+      "explain": "<= is a relational operator.",
+      "difficulty": 2
+    },
+    {
+      "statement": "Which operator is used to invert all the digits in binary representation of a number?",
+      "options": [
+        "~",
+        "<<<",
+        ">>>",
+        "^"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "~"
+      ],
+      "explain": "Unary not operator, ~, inverts all of the bits of its operand in binary representation.",
+      "difficulty": 4
+    },
+    {
+      "statement": "On applying Left shift operator, <<, on an integer bits are lost one they are shifted past which position bit?",
+      "options": [
+        "1",
+        "32",
+        "33",
+        "31"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "31"
+      ],
+      "explain": "The left shift operator shifts all of the bits in a value to the left specified number of times. For each shift left, the high order bit is shifted out and lost, zero is brought in from right. When a left shift is applied to an integer operand, bits are lost once they are shifted past the bit position 31.",
+      "difficulty": 1
+    },
+    {
+      "statement": "Which right shift operator preserves the sign of the value?",
+      "options": [
+        "<<",
+        ">>",
+        "<<=",
+        ">>="
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        ">>"
+      ],
+      "explain": "None.",
+      "difficulty": 4
+    },
+    {
+      "statement": "Which of these statements are incorrect?",
+      "options": [
+        "The left shift operator, <<, shifts all of the bits in a value to the left specified number of times",
+        "The right shift operator, >>, shifts all of the bits in a value to the right specified number of times",
+        "The left shift operator can be used as an alternative to multiplying by 2",
+        "The right shift operator automatically fills the higher order bits with 0"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "The right shift operator automatically fills the higher order bits with 0"
+      ],
+      "explain": "The right shift operator automatically fills the higher order bit with its previous contents each time a shift occurs. This also preserves the sign of the value.",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "42 42",
+        "43 43",
+        "42 -43",
+        "42 43"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "42 -43"
+      ],
+      "explain": "Unary not operator, ~, inverts all of the bits of its operand. 42 in binary is 00101010 in using ~ operator on var1 and assigning it to var2 we get inverted value of 42 i:e 11010101 which is -43 in decimal.",
+      "imgURL": "img/test/Java/2-2-6.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "7 2",
+        "7 7",
+        "7 5",
+        "5 2"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "7 2"
+      ],
+      "explain": "And operator produces 1 bit if both operand are 1. Or operator produces 1 bit if any bit of the two operands in 1.",
+      "imgURL": "img/test/Java/2-2-7.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "0 64",
+        "64 0",
+        "0 256",
+        "256 0"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "256 0"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/2-2-8.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "10",
+        "5",
+        "2",
+        "20"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "5"
+      ],
+      "explain": "Right shift operator, >>, devides the value by 2.",
+      "imgURL": "img/test/Java/2-2-9.png",
+      "difficulty": 3
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "3 1 6",
+        "2 2 3",
+        "2 3 4",
+        "3 3 6"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "3 1 6"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/2-2-10.png",
+      "difficulty": 1
+    }
+  ]
+}

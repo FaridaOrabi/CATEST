@@ -1,0 +1,160 @@
+{
+  "title": "String Class",
+  "questions": [
+    {
+      "statement": "String in Java is a?",
+      "options": [
+        "class",
+        "object",
+        "variable",
+        "character array"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "class"
+      ],
+      "explain": "None.",
+      "difficulty": 3
+    },
+    {
+      "statement": "Which of these method of String class is used to obtain character at specified index?",
+      "options": [
+        "char()",
+        "Charat()",
+        "charat()",
+        "charAt()"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "charAt()"
+      ],
+      "explain": "None.",
+      "difficulty": 3
+    },
+    {
+      "statement": "Which of these keywords is used to refer to member of base class from a subclass?",
+      "options": [
+        "upper",
+        "super",
+        "this",
+        "none of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "super"
+      ],
+      "explain": "Whenever a subclass needs to refer to its immediate superclass, it can do so by use of the keyword super.",
+      "difficulty": 4
+    },
+    {
+      "statement": "Which of these method of String class can be used to test to strings for equality?",
+      "options": [
+        "isequal()",
+        "isequals()",
+        "equal()",
+        "equals()"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "equals()"
+      ],
+      "explain": "None.",
+      "difficulty": 1
+    },
+    {
+      "statement": "Which of the following statements are incorrect?",
+      "options": [
+        "String is a class",
+        "Strings in java are mutable",
+        "Every string is an object of class String",
+        "Java defines a peer class of String, called StringBuffer, which allows string to be altered"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Strings in java are mutable"
+      ],
+      "explain": "Strings in Java are immutable that is they can not be modified.",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "I",
+        "like",
+        "Java",
+        "IlikeJava"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "IlikeJava"
+      ],
+      "explain": "Java defines an operator +, it is used to concatenate strings.",
+      "imgURL": "img/test/Java/4-10-6.png",
+      "difficulty": 3
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "I",
+        "L",
+        "K",
+        "E"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "I"
+      ],
+      "explain": "charAt() is a method of class String which gives the character specified by the index. obj.charAt(3) gives 4th character i:e I.",
+      "imgURL": "img/test/Java/4-10-7.png",
+      "difficulty": 4
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "11"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/4-10-8.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "hello hello",
+        "world world",
+        "hello world",
+        "world hello"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "hello world"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/4-10-9.png",
+      "difficulty": 2
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "false false",
+        "true true",
+        "true false",
+        "false true"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "false true"
+      ],
+      "explain": "equals() is method of class String, it is used to check equality of two String objects, if they are equal, true is retuned else false.",
+      "imgURL": "img/test/Java/4-10-10.png",
+      "difficulty": 1
+    }
+  ]
+}

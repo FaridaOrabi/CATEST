@@ -1,0 +1,155 @@
+{
+  "title": "JDK, JRE, JIT & JVM",
+  "questions": [
+    {
+      "statement": "Which component is used to compile, debug and execute java program?",
+      "options": [
+        "JVM",
+        "JDK",
+        "JIT",
+        "JRE"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "JDK"
+      ],
+      "explain": "JDK is core component of Java Environment and provides all the tools, executables and binaries required to compile, debug and execute a Java Program.",
+      "difficulty": 2
+    },
+    {
+      "statement": "Which component is responsible for converting bytecode into machine specific code?",
+      "options": [
+        "JVM",
+        "JDK",
+        "JIT",
+        "JRE"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "JVM"
+      ],
+      "explain": "JVM is responsible to converting bytecode to the machine specific code. JVM is also platform dependent and provides core java functions like garbage collection,memory management, security etc.",
+      "difficulty": 2
+    },
+    {
+      "statement": "Which component is responsible to run java program?",
+      "options": [
+        "JVM",
+        "JDK",
+        "JIT",
+        "JRE"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "JRE"
+      ],
+      "explain": "JRE is the implementation of JVM, it provides platform to execute java programs.",
+      "difficulty": 2
+    },
+    {
+      "statement": "Which component is responsible to optimize bytecode to machine code?",
+      "options": [
+        "JVM",
+        "JDK",
+        "JIT",
+        "JRE"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "JIT"
+      ],
+      "explain": "JIT optimizes bytecode to machine specific language code by compiling similar bytecodes at same time.This reduces overall time taken for compilation of bytecode to machine specific language.",
+      "difficulty": 1
+    },
+    {
+      "statement": "Which statement is true about java?",
+      "options": [
+        "Platform independent programming language",
+        "Platform dependent programming language",
+        "Code dependent programming language",
+        "Sequence dependent programming language"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Platform independent programming language"
+      ],
+      "explain": "Java is called ‘Platform Independent Language’ as it primarily works on the principle of ‘compile once, run everywhere’.",
+      "difficulty": 4
+    },
+    {
+      "statement": "Which of the below is invalid identifier with main method?",
+      "options": [
+        "public",
+        "static",
+        "private",
+        "final"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "private"
+      ],
+      "explain": "main method cannot be private as it is invoked by external method. Other identifier are valid with main method.",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the extension of java code files?",
+      "options": [
+        ".class",
+        ".java",
+        ".txt",
+        ".js"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        ".java"
+      ],
+      "explain": "Java files have .java extension.",
+      "difficulty": 4
+    },
+    {
+      "statement": "What is the extension of compiled java classes?",
+      "options": [
+        ".class",
+        ".java",
+        ".txt",
+        ".js"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        ".class"
+      ],
+      "explain": "The compiled java files have .class extension.",
+      "difficulty": 3
+    },
+    {
+      "statement": "How can we identify whether a compilation unit is class or interface from a .class file?",
+      "options": [
+        "Java source file header",
+        "Extension of compilation unit",
+        "We cannot differentiate between class and interface",
+        "The class or interface name should be postfixed with unit type"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Java source file header"
+      ],
+      "explain": "The Java source file contains a header that declares the type of class or interface, its visibility with respect to other classes, its name and any superclass it may extend, or interface it implements.",
+      "difficulty": 2
+    },
+    {
+      "statement": " What is use of interpreter?",
+      "options": [
+        "They convert bytecode to machine language code",
+        "They read high level code and execute them",
+        "They are intermediated between JIT and JVM",
+        "It is a synonym for JIT"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "They read high level code and execute them"
+      ],
+      "explain": "Interpreters read high level language (interprets it) and execute the program. Interpreters are normally not passing through byte-code and jit compilation.",
+      "difficulty": 4
+    }
+  ]
+}

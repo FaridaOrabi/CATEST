@@ -1,0 +1,160 @@
+{
+  "title": "Recursion",
+  "questions": [
+    {
+      "statement": "What is Recursion in Java?",
+      "options": [
+        "Recursion is a class",
+        "Recursion is a process of defining a method that calls other methods repeatedly",
+        "Recursion is a process of defining a method that calls itself repeatedly",
+        "Recursion is a process of defining a method that calls other methods which in turn call again this method"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Recursion is a process of defining a method that calls other methods repeatedly"
+      ],
+      "explain": "Recursion is the process of defining something in terms of itself. It allows us to define method that calls itself.",
+      "difficulty": 3
+    },
+    {
+      "statement": "Which of these data types is used by operating system to manage the Recursion in Java?",
+      "options": [
+        "Array",
+        "Stack",
+        "Queue",
+        "Tree"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Stack"
+      ],
+      "explain": "Recursions are always managed by using stack.",
+      "difficulty": 1
+    },
+    {
+      "statement": "Which of these will happen if recursive method does not have a base case?",
+      "options": [
+        "An infinite loop occurs",
+        "System stops the program after some time",
+        "After 1000000 calls it will be automatically stopped",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "An infinite loop occurs"
+      ],
+      "explain": "If a recursive method does not have a base case then an infinite loop occurs which results in Stack Overflow.",
+      "difficulty": 1
+    },
+    {
+      "statement": "Which of these is not a correct statement?",
+      "options": [
+        "A recursive method must have a base case",
+        "Recursion always uses stack",
+        "Recursive methods are faster that programmers written loop to call the function repeatedly using a stack",
+        "Recursion is managed by Java Runtime environment"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Recursion is managed by Java Runtime environment"
+      ],
+      "explain": "Recursion is always managed by operating system.",
+      "difficulty": 1
+    },
+    {
+      "statement": "Which of these packages contains the exception Stack Overflow in Java?",
+      "options": [
+        "java.lang",
+        "java.util",
+        "java.io",
+        "java.system"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "java.lang"
+      ],
+      "explain": "None.",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "0",
+        "1",
+        "Compilation Error",
+        "Runtime Error"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Runtime Error"
+      ],
+      "explain": "Since the base case of the recursive function func() is not defined hence infinite loop occurs and results in Stack Overflow.",
+      "imgURL": "img/test/Java/4-14-6.png",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "0",
+        "1",
+        "120",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "1"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/4-14-7.png",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "24",
+        "30",
+        "120",
+        "720"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "120"
+      ],
+      "explain": "fact() method recursively calculates factorial of a number, when value of n reaches 1, base case is excuted and 1 is returned.",
+      "imgURL": "img/test/Java/4-14-8.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "1",
+        "30",
+        "120",
+        "Runtime Error"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "1"
+      ],
+      "explain": "fact() method recursively calculates factorial of a number, when value of n reaches 1, base case is excuted and 1 is returned.",
+      "imgURL": "img/test/Java/4-14-9.png",
+      "difficulty": 2
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "1",
+        "30",
+        "120",
+        "720"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "720"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/4-14-10.png",
+      "difficulty": 3
+    }
+  ]
+}

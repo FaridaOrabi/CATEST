@@ -1,0 +1,161 @@
+{
+  "title": "Overloading Methods & Argument Passing",
+  "questions": [
+    {
+      "statement": "What is process of defining two or more methods within same class that have same name but different parameters declaration?",
+      "options": [
+        "method overloading",
+        "method overriding",
+        "method hiding",
+        "none of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "method overloading"
+      ],
+      "explain": "Two or more methods can have same name as long as their parameters declaration is different, the methods are said to be overloaded and process is called method overloading. Method overloading is a way by which Java implements polymorphism.",
+      "difficulty": 2
+    },
+    {
+      "statement": "Which of these can be overloaded?",
+      "options": [
+        "Methods",
+        "Constructors",
+        "All of the mentioned",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "All of the mentioned"
+      ],
+      "explain": "None.",
+      "difficulty": 3
+    },
+    {
+      "statement": "Which of these is correct about passing an argument by call-by-value process?",
+      "options": [
+        "Copy of argument is made into the formal parameter of the subroutine",
+        "Reference to original argument is passed to formal parameter of the subroutine",
+        "Copy of argument is made into the formal parameter of the subroutine and changes made on parameters of subroutine have effect on original argument",
+        "Reference to original argument is passed to formal parameter of the subroutine and changes made on parameters of subroutine have effect on original argument"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Copy of argument is made into the formal parameter of the subroutine"
+      ],
+      "explain": "When we pass an argument by call-by-value a copy of argument is made into the formal parameter of the subroutine and changes made on parameters of subroutine have no effect on original argument, they remain the same.",
+      "difficulty": 3
+    },
+    {
+      "statement": "What is the process of defining a method in terms of itself, that is a method that calls itself?",
+      "options": [
+        "Polymorphism",
+        "Abstraction",
+        "Encapsulation",
+        "Recursion"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Recursion"
+      ],
+      "explain": "None.",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the output of the following code?",
+      "options": [
+        "int float method",
+        "float int method",
+        "compile time error",
+        "run time error"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "compile time error"
+      ],
+      "explain": "While resolving overloaded method, compiler automatically promotes if exact match is not found. But in this case, which one to promote is an ambiguity.",
+      "imgURL": "img/test/Java/4-6-5.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "7"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/4-6-6.png",
+      "difficulty": 4
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "8"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/4-6-7.png",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "6 6",
+        "6.4 6.4",
+        "6.4 6",
+        "4 6.4"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "4 6.4"
+      ],
+      "explain": "For obj.add(a,a); ,the function in line number 4 gets executed and value of x is 4. For the next function call, the function in line number 7 gets executed and value of y is 6.4",
+      "imgURL": "img/test/Java/4-6-8.png",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "10 20",
+        "20 10",
+        "20 40",
+        "40 20"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "10 20"
+      ],
+      "explain": "Variables a & b are passed by value, copy of their values are made on formal parameters of function meth() that is i & j. Therefore changes done on i & j are not reflected back on original arguments. a & b remain 10 & 20 respectively.",
+      "imgURL": "img/test/Java/4-6-9.png",
+      "difficulty": 2
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "10 20",
+        "20 10",
+        "20 40",
+        "40 20"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "20 10"
+      ],
+      "explain": "Class objects are always passed by reference, therefore changes done are reflected back on original arguments. obj.meth(obj) sends object obj as parameter whose variables a & b are multiplied and divided by 2 respectively by meth() function of class test. a & b becomes 20 & 10 respectively.",
+      "imgURL": "img/test/Java/4-6-10.png",
+      "difficulty": 2
+    }
+  ]
+}

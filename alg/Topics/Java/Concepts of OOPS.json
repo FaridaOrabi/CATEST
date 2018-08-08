@@ -1,0 +1,153 @@
+{
+  "title": "Concepts of OOP",
+  "questions": [
+    {
+      "statement": "Which of the following is not OOPS concept in Java?",
+      "options": [
+        "Inheritance",
+        "Encapsulation",
+        "Polymorphism",
+        "Compilation"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Compilation"
+      ],
+      "explain": "There are 4 OOPS concepts in Java. Inheritance, Encapsulation, Polymorphism and Abstraction.",
+      "difficulty": 4
+    },
+    {
+      "statement": "Which of the following is a type of polymorphism in Java?",
+      "options": [
+        "Compile time polymorphism",
+        "Execution time polymorphism",
+        "Multiple polymorphism",
+        "Multilevel polymorphism"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Compile time polymorphism"
+      ],
+      "explain": "There are two type of polymorphism in Java. Compile time polymorphism (overloading) and runtime polymorphism (overriding).",
+      "difficulty": 3
+    },
+    {
+      "statement": "When does method overloading is determined?",
+      "options": [
+        "At run time",
+        "At compile time",
+        "At coding time",
+        "At execution time"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "At compile time"
+      ],
+      "explain": "Overloading is determined at compile time. Hence, it is also known as compile time polymorphism.",
+      "difficulty": 1
+    },
+    {
+      "statement": "When Overloading does not occur?",
+      "options": [
+        "More than one method with same name but different method signature and different number or type of parameters",
+        "More than one method with same name, same signature but different number of signature",
+        "More than one method with same name, same signature, same number of parameters but different type",
+        "More than one method with same name, same number of parameters and type but different signature"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "More than one method with same name, same number of parameters and type but different signature"
+      ],
+      "explain": "Overloading occurs when more than one method with same name but different constructor and also when same signature but different number of parameters and/or parameter type.",
+      "difficulty": 1
+    },
+    {
+      "statement": "Which concept of Java is a way of converting real world objects in terms of class?",
+      "options": [
+        "Polymorphism",
+        "Encapsulation",
+        "Abstraction",
+        "Inheritance"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Abstraction"
+      ],
+      "explain": "Abstraction is concept of defining real world objects in terms of classes or interfaces.",
+      "difficulty": 4
+    },
+    {
+      "statement": "Which concept of Java is achieved by combining methods and attribute into a class?",
+      "options": [
+        "Encapsulation",
+        "Inheritance",
+        "Polymorphism",
+        "Abstraction"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Encapsulation"
+      ],
+      "explain": "Encapsulation is implemented by combining methods and attribute into a class. The class acts like a container of encapsulating properties.",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is it called if an object has its own lifecycle and there is no owner?",
+      "options": [
+        "Aggregation",
+        "Composition",
+        "Encapsulation",
+        "Association"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Association"
+      ],
+      "explain": "It is a relationship where all objects have their own lifecycle and there is no owner. This occurs where many to many relationship is available, instead of one to one or one to many.",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is it called where child object gets killed if parent object is killed?",
+      "options": [
+        "Aggregation",
+        "Composition",
+        "Encapsulation",
+        "Association"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Composition"
+      ],
+      "explain": "Composition occurs when child object gets killed if parent object gets killed. Aggregation is also known as strong Aggregation.",
+      "difficulty": 4
+    },
+    {
+      "statement": "What is it called where object has its own lifecycle and child object cannot belong to another parent object?",
+      "options": [
+        "Aggregation",
+        "Composition",
+        "Encapsulation",
+        "Association"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Aggregation"
+      ],
+      "explain": "Aggregation occurs when objects have their own life cycle and child object can associate with only one parent object.",
+      "difficulty": 1
+    },
+    {
+      "statement": " Method overriding is combination of inheritance and polymorphism?",
+      "options": [
+        "True",
+        "false"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "True"
+      ],
+      "explain": "In order for method overriding, method with same signature in both superclass and subclass is required with same signature. That satisfies both concepts inheritance and polymorphism.",
+      "difficulty": 4
+    }
+  ]
+}

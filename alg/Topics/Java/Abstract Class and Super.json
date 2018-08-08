@@ -1,0 +1,160 @@
+{
+  "title": "Abstract Class and Super",
+  "questions": [
+    {
+      "statement": "Which of these keywords are used to define an abstract class?",
+      "options": [
+        "abst",
+        "abstract",
+        "Abstract",
+        "abstract class"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "abstract"
+      ],
+      "explain": "None.",
+      "difficulty": 4
+    },
+    {
+      "statement": "Which of these is not abstract?",
+      "options": [
+        "Thread",
+        "AbstractList",
+        "List",
+        "None of the Mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Thread"
+      ],
+      "explain": "Thread is not an abstract class.",
+      "difficulty": 3
+    },
+    {
+      "statement": "If a class inheriting an abstract class does not define all of its function then it will be known as?",
+      "options": [
+        "Abstract",
+        "A simple class",
+        "Static class",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Abstract"
+      ],
+      "explain": "Any subclass of an abstract class must either implement all of the abstract method in the superclass or be itself declared abstract.",
+      "difficulty": 3
+    },
+    {
+      "statement": "Which of these is not a correct statement?",
+      "options": [
+        "Every class containing abstract method must be declared abstract",
+        "Abstract class defines only the structure of the class not its implementation",
+        "Abstract class can be initiated by new operator",
+        "Abstract class can be inherited"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Abstract class can be initiated by new operator"
+      ],
+      "explain": "Abstract class cannot be directly initiated with new operator, Since abstract class does not contain any definition of implementation it is not possible to create an abstract object.",
+      "difficulty": 3
+    },
+    {
+      "statement": "Which of these packages contains abstract keyword?",
+      "options": [
+        "java.lang",
+        "java.util",
+        "java.io",
+        "java.system"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "java.lang"
+      ],
+      "explain": "None.",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "2 2",
+        "3 3",
+        "Runtime Error",
+        "Compilation Error"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Compilation Error"
+      ],
+      "explain": "Class contains a private member variable j, this cannot be inherited by subclass B and does not have access to it.",
+      "imgURL": "img/test/Java/5-3-6.png",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "1 2",
+        "2 1",
+        "Runtime Error",
+        "Compilation Error"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "1 2"
+      ],
+      "explain": "Keyword super is used to call constructor of class A by constructor of class B. Constructor of a initializes i & j to 1 & 2 respectively.",
+      "imgURL": "img/test/Java/5-3-7.png",
+      "difficulty": 3
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "0",
+        "2",
+        "Runtime Error",
+        "Compilation Error"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "2"
+      ],
+      "explain": "class A is an abstract class, it contains a abstract function display(), the full implementation of display() method is given in its subclass B, Both the display functions are the same. Prototype of display() is defined in class A and its implementation is given in class B.",
+      "imgURL": "img/test/Java/5-3-8.png",
+      "difficulty": 3
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "Compilation Error"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "2"
+      ],
+      "explain": "class A & class B both contain display() method, class B inherits class A, when display() method is called by object of class B, display() method of class B is executed rather than that of Class A.",
+      "imgURL": "img/test/Java/5-3-9.png",
+      "difficulty": 1
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "1 2",
+        "2 1",
+        "1 3",
+        "3 1"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "1 2"
+      ],
+      "explain": "Both class A & B have member with same name that is j, member of class B will be called by default if no specifier is used. I contains 1 & j contains 2, printing 1 2.",
+      "imgURL": "img/test/Java/5-3-10.png",
+      "difficulty": 2
+    }
+  ]
+}

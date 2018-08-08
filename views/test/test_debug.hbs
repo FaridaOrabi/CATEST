@@ -73,8 +73,8 @@
             function topicHighlight()
             {
                 var t = '{{topic_title topics currentTopicIndex}}';
-                var green = 'list-group-item-success',
-                    grey = 'list-group-item-secondary';
+                var green = 'list-group-item-success', // try active
+                    grey = 'list-group-item-secondary'; // try disabled
                 
                 for(var x of topicSideBar.children)
                     if(x.innerText != t)

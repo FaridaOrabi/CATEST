@@ -1,0 +1,162 @@
+{
+  "title": "Arrays",
+  "questions": [
+    {
+      "statement": "Which of these operators is used to allocate memory to array variable in Java?",
+      "options": [
+        "malloc",
+        "alloc",
+        "new",
+        "new malloc"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "new"
+      ],
+      "explain": "Operator new allocates block of memory specified by the size of array, and gives the reference of memory allocated to the array variable.",
+      "difficulty": 1
+    },
+    {
+      "statement": "Which of these is an incorrect array declaration?",
+      "options": [
+        "int arr[] = new int[5]",
+        "int [] arr = new int[5]",
+        "int arr[] = new int[5]",
+        "int arr[] = int [5] new"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "int arr[] = int [5] new"
+      ],
+      "explain": "Operator new must be succeeded by array type and array size.",
+      "imgURL": "img/test/Java/1-8-2.png",
+      "difficulty": 1
+    },
+    {
+      "statement": "What will this code print?",
+      "options": [
+        "0",
+        "value stored in arr[0].",
+        "00000",
+        "Class address hashcode in hexadecimal form"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Class address hashcode in hexadecimal form"
+      ],
+      "explain": "If we trying to print any reference variable internally, toString() will be called which is implemented to return the String in following form: Address in hexadecimal form",
+      "imgURL": "img/test/Java/1-8-3.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "Which of these is an incorrect Statement?",
+      "options": [
+        "It is necessary to use new operator to initialize an array.",
+        "Array can be initialized using comma separated expressions surrounded by curly braces.",
+        "Array can be initialized when they are declared.",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "It is necessary to use new operator to initialize an array."
+      ],
+      "explain": "Array can be initialized using both new and comma separated expressions surrounded by curly braces example : int arr[5] = new int[5]; and int arr[] = { 0, 1, 2, 3, 4};",
+      "difficulty": 4
+    },
+    {
+      "statement": "Which of these is necessary to specify at time of array initialization?",
+      "options": [
+        "Row",
+        "Column",
+        "Both Row and Column",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Row"
+      ],
+      "explain": "None.",
+      "difficulty": 3
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "0 2 4 6 8",
+        "1 3 5 7 9",
+        "0 1 2 3 4 5 6 7 8 9",
+        "1 2 3 4 5 6 7 8 9 10"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "0 2 4 6 8"
+      ],
+      "explain": "When an array is declared using new operator then all of its elements are initialized to 0 automatically. for loop body is executed 5 times as whenever controls comes in the loop i value is incremented twice, first by i++ in body of loop then by ++i in increment condition of for loop.",
+      "imgURL": "img/test/Java/1-8-6.png",
+      "difficulty": 4
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "11",
+        "10",
+        "13",
+        "14"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "10"
+      ],
+      "explain": "arr[][] is a 2D array, array has been allotted memory in parts. 1st row contains 1 element, 2nd row contains 2 elements and 3rd row contains 3 elements. each element of array is given i + j value in loop. sum contains addition of all the elements of the array.",
+      "imgURL": "img/test/Java/1-8-7.png",
+      "difficulty": 3
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "3",
+        "0",
+        "6",
+        "1"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "1"
+      ],
+      "explain": "Array arr contains 10 elements. n contains 6 thus in next line n is given value 2 printing arr[2]/2 i:e 2/2 = 1.",
+      "imgURL": "img/test/Java/1-8-8.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "1 2 3 4 5 6 7 8 9 10",
+        "0 1 2 3 4 5 6 7 8 9 10",
+        "i j k l m n o p q r",
+        "i i i i i i i i i i"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "i i i i i i i i i i"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/1-8-9.png",
+      "difficulty": 1
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "9"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/1-8-10.png",
+      "difficulty": 4
+    }
+  ]
+}

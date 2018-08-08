@@ -1,0 +1,158 @@
+{
+  "title": "Arithmetic Operators",
+  "questions": [
+    {
+      "statement": "Which of the following can be operands of arithmetic operators?",
+      "options": [
+        "Numeric",
+        "Boolean",
+        "Characters",
+        "Both Numeric & Characters"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Both Numeric & Characters"
+      ],
+      "explain": "The operand of arithmetic operators can be any of numeric or character type, But not boolean.",
+      "difficulty": 2
+    },
+    {
+      "statement": "Modulus operator, %, can be applied to which of these?",
+      "options": [
+        "Integers",
+        "Floating – point numbers",
+        "Both Integers and floating – point numbers.",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Both Integers and floating – point numbers."
+      ],
+      "explain": "Modulus operator can be applied to both integers and floating point numbers.",
+      "difficulty": 3
+    },
+    {
+      "statement": "With x = 0, which of the following are legal lines of Java code for changing the value of x to 1?",
+      "options": [
+        "1, 2 & 3",
+        "1 & 4",
+        "1, 2, 3 & 4",
+        "3 & 2"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "1, 2, 3 & 4"
+      ],
+      "explain": "Operator ++ increases value of variable by 1. x = x + 1 can also be written in shorthand form as x += 1. Also x =+ 1 will set the value of x to 1.",
+      "imgURL": "img/test/Java/2-1-3.png",
+      "difficulty": 3
+    },
+    {
+      "statement": "Decrement operator, −−, decreases value of variable by what number?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "1"
+      ],
+      "explain": "None",
+      "difficulty": 4
+    },
+    {
+      "statement": "Which of these statements are incorrect?",
+      "options": [
+        "Assignment operators are more efficiently implemented by Java run-time system than their equivalent long forms.",
+        "Assignment operators run faster than their equivalent long forms.",
+        "Assignment operators can be used only with numeric and character data type.",
+        "None"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "None"
+      ],
+      "explain": "None.",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "1 1",
+        "0 1",
+        "1.5 1",
+        "1.5 1.0"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "1.5 1"
+      ],
+      "explain": "None",
+      "imgURL": "img/test/Java/2-1-6.png",
+      "difficulty": 4
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "5.640000000000001 5",
+        "5.640000000000001 5.0",
+        "5 5",
+        "5 5.640000000000001"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "5.640000000000001 5"
+      ],
+      "explain": "Modulus operator returns the remainder of a division operation on the operand. a = a % 10 returns 25.64 % 10 i:e 5.640000000000001. Similarly b = b % 10 returns 5.",
+      "imgURL": "img/test/Java/2-1-7.png",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "25",
+        "24",
+        "32",
+        "33"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "32"
+      ],
+      "explain": "Operator ++ has more preference than *, thus g becomes 4 and when multiplied by 8 gives 32.",
+      "imgURL": "img/test/Java/2-1-8.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "Can 8 byte long data type be automatically type cast to 4 byte float data type?",
+      "options": [
+        "True",
+        "False"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "True"
+      ],
+      "explain": "Both data types have different memory representation that’s why 8-byte integral data type can be stored to 4-byte floating point data type.",
+      "difficulty": 3
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "3 2 4",
+        "3 2 3",
+        "2 3 4",
+        "3 4 4"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "3 4 4"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/2-1-10.png",
+      "difficulty": 2
+    }
+  ]
+}

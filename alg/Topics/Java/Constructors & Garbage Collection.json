@@ -1,0 +1,159 @@
+{
+  "title": "Constructors & Garbage Collection",
+  "questions": [
+    {
+      "statement": "What is the return type of Constructors?",
+      "options": [
+        "int",
+        "float",
+        "void",
+        "none of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "none of the mentioned"
+      ],
+      "explain": "Constructors does not have any return type, not even void.",
+      "difficulty": 4
+    },
+    {
+      "statement": "Which keyword is used by method to refer to the object that invoked it?",
+      "options": [
+        "import",
+        "catch",
+        "abstract",
+        "this"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "this"
+      ],
+      "explain": "this keyword can be used inside any method to refer to the current object. this is always a reference to the object on which the method was invoked.",
+      "difficulty": 4
+    },
+    {
+      "statement": "Which of the following is a method having same name as that of its class?",
+      "options": [
+        "finalize",
+        "delete",
+        "class",
+        "constructor"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "constructor"
+      ],
+      "explain": "A constructor is a method that initializes an object immediately upon creation. It has the same name as that of class in which it resides.",
+      "difficulty": 1
+    },
+    {
+      "statement": "Which operator is used by Java run time implementations to free the memory of an object when it is no longer needed?",
+      "options": [
+        "delete",
+        "free",
+        "new",
+        "none of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "none of the mentioned"
+      ],
+      "explain": "Java handles deallocation of memory automatically, we do not need to explicitly delete an element. Garbage collection only occurs during execution of the program. When no references to the object exist, that object is assumed to be no longer needed, and the memory occupied by the object can be reclaimed.",
+      "difficulty": 2
+    },
+    {
+      "statement": "Which function is used to perform some action when the object is to be destroyed?",
+      "options": [
+        "finalize()",
+        "delete()",
+        "main()",
+        "none of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "finalize()"
+      ],
+      "explain": "None.",
+      "difficulty": 3
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "100",
+        "150",
+        "200",
+        "250"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "150"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/4-3-6.png",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "compile time error",
+        "run time error",
+        "compile and runs fine",
+        "unreported exception java.io.IOException in default constructor"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "compile time error"
+      ],
+      "explain": "If parent class constructor throws any checked exception, compulsory child class constructor should throw the same checked exception as its parent, otherwise code won’t compile.",
+      "imgURL": "img/test/Java/4-3-7.png",
+      "difficulty": 4
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "150",
+        "200",
+        "Run time error",
+        "Compilation error"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "150"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/4-3-8.png",
+      "difficulty": 3
+    },
+    {
+      "statement": "Which of the following statements are incorrect?",
+      "options": [
+        "default constructor is called at the time of object declaration",
+        "Constructor can be parameterized",
+        "finalize() method is called when a object goes out of scope and is no longer needed",
+        "finalize() method must be declared protected"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "finalize() method is called when a object goes out of scope and is no longer needed"
+      ],
+      "explain": "finalize() method is called just prior to garbage collection. it is not called when object goes out of scope.",
+      "difficulty": 4
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "0 0",
+        "5 6",
+        "6 5",
+        "5 5"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "6 5"
+      ],
+      "explain": "this keyword can be used inside any method to refer to the current object. this is always a reference to the object on which the method was invoked.",
+      "imgURL": "img/test/Java/4-3-10.png",
+      "difficulty": 2
+    }
+  ]
+}

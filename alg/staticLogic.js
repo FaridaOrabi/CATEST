@@ -1,3 +1,7 @@
+var fs = require('fs');
+
+const topicPath = './alg/Topics/Java/';
+
 function rndUnfrm(n) {
     return ~~(Math.random() * n);
 }
@@ -16,24 +20,59 @@ function shuffle(array) {
     return array;
 }
 
+function readJSON(filename)
+{    
+    // return require(filename);
+    return JSON.parse(fs.readFileSync(filename, 'utf-8'));
+}
+
+function writeJSON(path, data)
+{
+    fs.writeFile(path, JSON.stringify(data));
+}
+
+function writeTopic(topic)
+{
+    writeJSON(topic.topicTitle, topic);
+}
+
 class Test
 {
-    static init(title, ...TopicArr)
+    static init(title, selectedTopic)
     {
         var obj = {
             testTitle: title,
             topics: [],
             currentQuestion : {}, // reference to question
             previousQuestion : {}, // reference to question
-            currentDiff : 4,
+            currentDiff : 2,
             currentTopicIndex : 0 // first topic index
         };
-        for(var x of TopicArr){
+
+        if(!Array.isArray(selectedTopic)) // // fix single topic
+            selectedTopic = [selectedTopic];
+        
+        for(let t of selectedTopic){
+            let x = this.loadTopic(t);
             x.level = Topic.stratify(x);
             x.pickedQuestions = [];
             obj.topics.push(x);
         }
         return obj;
+    }
+
+    static loadQuiz(subject)
+    {
+        var list_topics = fs.readFileSync('./alg/Topics/' + subject, 'utf-8').split('\n'),
+            topics = [];
+        for(var x of list_topics)
+            topics.push(readJSON(topicPath + x + '.json'));
+        return topics;
+    }
+
+    static loadTopic(topicTitle)
+    {
+        return readJSON(topicPath + topicTitle + '.json');
     }
 
     static pickQuestion(obj)
@@ -114,15 +153,4 @@ class Question
     }
 }
 
-class Parameter
-{
-
-}
-
-class Metric
-{
-
-}
-
-
-module.exports = {Test, Topic, Question, Parameter, Metric};
+module.exports = {Test, Topic, Question};

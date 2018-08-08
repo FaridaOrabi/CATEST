@@ -1,0 +1,160 @@
+{
+  "title": "Method overriding",
+  "questions": [
+    {
+      "statement": "Which of these keyword can be used in subclass to call the constructor of superclass?",
+      "options": [
+        "super",
+        "this",
+        "extent",
+        "extends"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "super"
+      ],
+      "explain": "None.",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the process of defining a method in subclass having same name & type signature as a method in its superclass?",
+      "options": [
+        "Method overloading",
+        "Method overriding",
+        "Method hiding",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Method overriding"
+      ],
+      "explain": "None.",
+      "difficulty": 2
+    },
+    {
+      "statement": "Which of these keywords can be used to prevent Method overriding?",
+      "options": [
+        "static",
+        "constant",
+        "protected",
+        "final"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "final"
+      ],
+      "explain": "To disallow a method from being overridden, specify final as a modifier at the start of its declaration. Methods declared as final cannot be overridden.",
+      "difficulty": 3
+    },
+    {
+      "statement": "Which of these is correct way of calling a constructor having no parameters, of superclass A by subclass B?",
+      "options": [
+        "super(void);",
+        "superclass.();",
+        "super.A();",
+        "super();"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "super();"
+      ],
+      "explain": "None.",
+      "difficulty": 4
+    },
+    {
+      "statement": "At line number 2 below, choose 3 valid data-type attributes/qualifiers among “final, static, native, public, private, abstract, protected”",
+      "options": [
+        "final, native, private",
+        "final, static, protected",
+        "final, private, abstract",
+        "final, static, public"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "final, static, public"
+      ],
+      "explain": "Every interface variable is implicitly public static and final.",
+      "imgURL": "img/test/Java/5-1-5.png",
+      "difficulty": 3
+    },
+    {
+      "statement": "Which of these is supported by method overriding in Java?",
+      "options": [
+        "Abstraction",
+        "Encapsulation",
+        "Polymorphism",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Polymorphism"
+      ],
+      "explain": "None.",
+      "difficulty": 4
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "2",
+        "3",
+        "7",
+        "Compilation Error"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "7"
+      ],
+      "explain": "Both x,and y are pointing to the same array.",
+      "imgURL": "img/test/Java/5-1-7.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "2 2",
+        "3 3",
+        "Runtime Error",
+        "Compilation Error"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Compilation Error"
+      ],
+      "explain": "class A has been declared final hence it cannot be inherited by any other class. Hence class B does not have member i, giving compilation error.",
+      "imgURL": "img/test/Java/5-1-8.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "Compilation error",
+        "An exception is thrown at run time",
+        "The variable first is set to null",
+        "The variable first is set to elements[0]."
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "The variable first is set to elements[0]."
+      ],
+      "explain": "The value at the 0th position will be assigned to the variable first.",
+      "imgURL": "img/test/Java/5-1-9.png",
+      "difficulty": 1
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "2"
+      ],
+      "explain": "r is reference of type A, the program assigns a reference of object obj2 to r and uses that reference to call function display() of class B.",
+      "imgURL": "img/test/Java/5-1-10.png",
+      "difficulty": 3
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "title": "Type Conversions, Promotions and Castings",
+  "questions": [
+    {
+      "statement": "Which of these is necessary condition for automatic type conversion in Java?",
+      "options": [
+        "The destination type is smaller than source type",
+        "The destination type is larger than source type",
+        "The destination type can be larger or smaller than source type",
+        "None of the mentioned"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "The destination type is larger than source type"
+      ],
+      "explain": "None.",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the prototype of the default constructor of this class?",
+      "options": [
+        "prototype( )",
+        "prototype(void)",
+        "public prototype(void)",
+        "public prototype( )"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "public prototype( )"
+      ],
+      "explain": "None.",
+      "imgURL": "img/test/Java/1-7-2.png",
+      "difficulty": 2
+    },
+    {
+      "statement": "What is the error in this code?",
+      "options": [
+        "b can not contain value 100, limited by its range.",
+        "* operator has converted b * 50 into int, which can not be converted to byte without casting.",
+        "b can not contain value 50.",
+        "No error in this code"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "* operator has converted b * 50 into int, which can not be converted to byte without casting."
+      ],
+      "explain": "While evaluating an expression containing int, bytes or shorts , the whole expression is converted to int then evaluated and result is also of type int.",
+      "imgURL": "img/test/Java/1-7-3.png",
+      "difficulty": 1
+    },
+    {
+      "statement": "If an expression contains double, int, float, long, then whole expression will promoted into which of these data types?",
+      "options": [
+        "long",
+        "int",
+        "double",
+        "float"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "double"
+      ],
+      "explain": "If any operand is double the result of expression is double.",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is Truncation is Java?",
+      "options": [
+        "Floating-point value assigned to an integer type",
+        "Integer value assigned to floating type",
+        "Floating-point value assigned to an Floating type",
+        "Integer value assigned to floating type"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Floating-point value assigned to an integer type"
+      ],
+      "explain": "None.",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "E U",
+        "U E",
+        "V E",
+        "U F"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "E U"
+      ],
+      "explain": "Operator ++ increments the value of character by 1. c1 and c2 are given values D and 84, when we use ++ operator their values increments by 1, c1 and c2 becomes E and U respectively.",
+      "imgURL": "img/test/Java/1-7-6.png",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "38 43",
+        "39 44",
+        "295 300",
+        "295.04 300"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "39 44"
+      ],
+      "explain": "Type casting a larger variable into a smaller variable results in modulo of larger variable by range of smaller variable. b contains 300 which is larger than byte’s range i:e -128 to 127 hence d contains 300 modulo 256 i:e 44.",
+      "imgURL": "img/test/Java/1-7-7.png",
+      "difficulty": 1
+    },
+    {
+      "statement": "What is the output of this program?",
+      "options": [
+        "b is : 2",
+        "b is : 1",
+        "Compilation Error.",
+        "An exception is thrown at runtime."
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Compilation Error."
+      ],
+      "explain": "The code does not compile because the method calculate() in class A is final and so cannot be overridden by method of class b.",
+      "imgURL": "img/test/Java/1-7-8.png",
+      "difficulty": 3
+    },
+    {
+      "statement": "What is the output of this program, if we run as “java main_arguments 1 2 3”?",
+      "options": [
+        "1 1",
+        "1 0",
+        "1 0 3",
+        "1 2 3"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "1 2 3"
+      ],
+      "explain": "In argument[0] = args;, the reference variable arg[0], which was referring to an array with two elements, is reassigned to an array (args) with three elements.",
+      "imgURL": "img/test/Java/1-7-9.png",
+      "difficulty": 4
+    },
+    {
+      "statement": " What is the output of this program?",
+      "options": [
+        "Hello c",
+        "Hello",
+        "Hello world",
+        "Runtime Error"
+      ],
+      "type": "SMCQ",
+      "correctAns": [
+        "Runtime Error"
+      ],
+      "explain": "A runtime error will occur owning to the main method of the code fragment not being declared static.",
+      "imgURL": "img/test/Java/1-7-10.png",
+      "difficulty": 2
+    }
+  ]
+}

@@ -1,45 +1,24 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
 
-// var TestFactory = require('../alg/statictest').Test;
 var Logic = require('../alg/staticLogic'),
     TestFactory = Logic.Test,
     TopicFactory = Logic.Topic,
-    QuestionFactory = Logic.Question,
-    ParameterFactory = Logic.Parameter,
-    MetricFactory = Logic.Metric;
-
-
-function readJSON(filename)
-{
-    // console.log('Reading a file....');
-    // return JSON.parse(fs.readFileSync(filename, 'utf-8'));
-    return require(filename);
-}
+    QuestionFactory = Logic.Question;
 
 router.get('/', (req, res) => {
-    var topic1 = require('../alg/Topics/1. Data Types, Variables and Arrays/1. Integer and Floating Data Types/1. Integer and Floating Data Types');
-    var topic2 = require('../alg/Topics/1. Data Types, Variables and Arrays/2. Character and Boolean Data Types/2. Character and Boolean Data Types');
-    var topic3 = require('../alg/Topics/1. Data Types, Variables and Arrays/6. Literals & Variables/6. Literals & Variables');
-
-    var t = TestFactory.init('[Java] Data Types', topic1, topic2, topic3);
-
-    console.log(t);
-
-    res.render('test/test_debug');
+    var available_topics = TestFactory.loadQuiz('Java.quiz');
+    res.render('test/test_home', {available_topics});
 });
 
 router.post('/setTestParams', (req, res) => {
-    var l = Number(req.body.testlength);
-    var java_qbnk = readJSON('../alg/java_quiz.json');
 
-    console.log(java_qbnk);
+    var t = TestFactory.init('Java Sample Exam', req.body.selectedTopics);
+    // set other parameters too
 
-    var t = TestFactory.init(l, java_qbnk);
-    var diff = Number(req.body.testdiff);
+    
     req.session.test = t;
-    t.currentDiff = Number(diff);
-
     res.redirect('/test/go');
 });
 
