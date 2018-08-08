@@ -44,41 +44,42 @@ class Test
             testTitle: title,
             topics: [],
             currentQuestion : {}, // reference to question
-            previousQuestion : {}, // reference to question
             currentDiff : 2,
-            currentTopicIndex : 0 // first topic index
+            currentTopicIndex : 0, // first topic index
+            progress: 0,
+            totalNumQuestions: 0,
+            percent : 0,
+            param_timeWarn : 10,
+            param_timeOut: 2000,
+            param_threshold : 60,
+            param_minDifficulty : 1,
+            param_maxDifficulty : 4,
+            metric_tick : 0,
         };
 
-        if(!Array.isArray(selectedTopic)) // // fix single topic
+        if(!Array.isArray(selectedTopic)) // fix single topic
             selectedTopic = [selectedTopic];
         
-        for(let t of selectedTopic){
-            let x = this.loadTopic(t);
-            x.level = Topic.stratify(x);
-            x.pickedQuestions = [];
-            obj.topics.push(x);
-        }
+        for(var t of selectedTopic)
+            obj.topics.push(Topic.init(t));
+
+        for(var x of obj.topics)
+            obj.totalNumQuestions += x.totalNumQuestions;
+
+        obj.currentTopic = obj.topics[0];
         return obj;
     }
 
-    static loadQuiz(subject)
+    static loadQuiz(subject) //.quiz
     {
-        var list_topics = fs.readFileSync('./alg/Topics/' + subject, 'utf-8').split('\n'),
-            topics = [];
-        for(var x of list_topics)
-            topics.push(readJSON(topicPath + x + '.json'));
-        return topics;
-    }
-
-    static loadTopic(topicTitle)
-    {
-        return readJSON(topicPath + topicTitle + '.json');
+        return fs.readFileSync('./alg/Topics/' + subject, 'utf-8').split('\n');
     }
 
     static pickQuestion(obj)
     {
         var diff = obj.currentDiff,
-            t = obj.topics[obj.currentTopicIndex];
+            // t = obj.topics[obj.currentTopicIndex];
+            t = obj.currentTopic;
 
         if (!t.level[diff]) return false;
 
@@ -101,16 +102,33 @@ class Test
 
     static answerLastQuestion(obj, answer)
     {
-        var q = currentQuestion;
-        q.isCorrect = Question.checkUserAnswer(obj, q.userAns);
+        var q = obj.currentQuestion;
+        q.isCorrect = Question.checkUserAnswer(q, q.userAns);
     }
 }
 
 class Topic
 {
-    static init()
+    static init(topic)
     {
 
+        var obj = {
+            level: [],
+            pickedQuestions: [],
+            progress: 0,
+            totalNumQuestions: 0,
+            percent :0
+        }
+        obj = {...obj, ...Topic.loadTopic(topic)}; // combine existing attributes
+        obj.level = Topic.stratify(obj);
+        obj.totalNumQuestions = obj.questions.length;
+        obj.percent = (obj.progress / obj.totalNumQuestions) * 100;
+        return obj;
+    }
+
+    static loadTopic(topicTitle)
+    {
+        return readJSON(topicPath + topicTitle + '.json');
     }
 
     static stratify(topic) {
@@ -142,14 +160,53 @@ class Topic
 
 class Question
 {
-    static checkUserAnswer(obj, answer)
+    static init()
     {
-        var correctAnswer = obj.correctAns;
+        var obj = {
+            metric_pickCount: 0,
+            metric_timeSpent: [],
+        };
+    }
+
+    static setUserAnswer(obj, answer)
+    {
+        obj.userAnswer = answer;
+    }
+
+    static checkUserAnswer(obj)
+    {
+        var correctAnswer = obj.correctAns,
+            answer = obj.userAnswer;
+        if(!Array.isArray(answer)) answer = [answer];
         for(var a of answer)
             if(correctAnswer.indexOf(a) == -1)
                 return false;
 
         return true;
+    }
+
+    static trackMetric(obj, duration)
+    {
+        var q = obj.currentQuestion;
+
+        if(q.metric_timeSpent === undefined)
+        {
+            q.metric_timeSpent.push(duration);
+            q.metric_pickCount++;
+        }
+        else 
+        {
+            q.metric_timeSpent = [];
+            q.metric_pickCount = 1;
+        }
+    }
+
+    static avgTimeSpent(obj)
+    {
+        var res = 0;
+        for(var x of obj.metric_timeSpent)
+            res += x;
+        return res / obj.metric_timeSpent.length;
     }
 }
 

@@ -1,51 +1,89 @@
 <div class="container">
-    <h3>Question {{ t.progress }} of {{ t.length }}</h3>
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{t.progress}}" aria-valuemin="0"
-            aria-valuemax="{{t.length}}" style="width: {{t.percent}}%"></div>
+    <div class="row">
+        <div class="col-sm-2">
+            <h2>Topics</h2>
+            <ul class="list-group" id="topicSideBar">
+                {{#each t.topics}}
+                    <li class="list-group-item">{{this.title}}</li>
+                {{/each}}
+            </ul>
+            <p id='timer'>0:0</p>
+        </div>
+        <div class="col-sm-10">
+
+            <div class="container">
+                <h3>Question {{ t.currentTopic.progress }} of {{ t.currentTopic.totalNumQuestions }}</h3>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{t.currentTopic.progress}}" aria-valuemin="0"
+                        aria-valuemax="{{t.currentTopic.totalNumQuestions}}" style="width: {{ t.currentTopic.percent }}%"></div>
+                </div>
+
+                <h2 class="border">{{ t.currentQuestion.statement }}</h2>
+
+                {{#if t.currentQuestion.imgURL}}
+                <img src="/{{t.currentQuestion.imgURL}}">
+                {{/if}}
+                
+                <p>Difficulty:
+                    <span class="badge badge-danger badge-pill">{{ t.currentQuestion.difficulty }}</span>
+                </p>
+                
+                <form action="next" method="post">
+                    <ul class="list-group">
+                        {{#each t.currentQuestion.options}}
+                        <li class="list-group-item">
+                            <input type="radio" name="choice" id="choice" value="{{this}}"> {{this}}
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <button class="btn btn-warning" type="submit" id="btnNext">Next</button>
+                </form>
+                
+            </div>
+        </div>
+
+        <script>
+            var timer = document.getElementById('timer'),
+                btnNext = document.getElementById('btnNext'),
+                s = 0,
+                timerWarn = {{t.param_timeWarn}},
+                timerOut = {{t.param_timeOut}};
+
+            setInterval(timeTick, 1000);
+
+            timer.style.fontFamily = 'Orbitron';
+            timer.style.fontSize = '72px';
+
+            topicHighlight();
+
+            function timeTick() {
+                s++;
+                seconds = s % 60;
+                minutes = Math.floor(s / 60);
+                timer.innerText = minutes + ':' + seconds;
+
+                if (s > timerOut)
+                    btnNext.click();
+                else if (s > timerWarn)
+                    timer.style.color = 'red';
+
+            }
+
+            function topicHighlight()
+            {
+                var t = '{{{t.currentTopic.title}}}';
+                var green = 'list-group-item-success', // try active
+                    grey = 'list-group-item-secondary'; // try disabled
+                
+                for(var x of topicSideBar.children)
+                    if(x.innerText != t)
+                        x.classList.add(grey);
+                    else
+                    {
+                        x.classList.add(green);
+                        return;
+                    }
+            }
+        </script>
     </div>
-
-    <h2 class="border">{{ q.question }}</h2>
-            <p>Difficulty:
-                <span class="badge badge-danger badge-pill">{{ q.difficulty }}</span>
-            </p>
-
-    <form action="/test/next" method="post">
-        <ul class="list-group">
-            {{#each q.options}}
-            <li class="list-group-item">
-                <input type="radio" name="choice" id="choice" value="{{this}}"> {{this}}
-            </li>
-            {{/each}}
-        </ul>
-        <button class="btn btn-warning" type="submit" id="btnNext">Next</button>
-    </form>
-    <p id='timer'>0:0</p>
 </div>
-
-<script>
-    var timer = document.getElementById('timer'),
-	btnNext = document.getElementById('btnNext'),
-	epoch = Date.now(),
-	timerWarn = 10,
-    timerOut = 20;
-
-setInterval(timeTick, 1000);
-
-timer.style.fontFamily = 'Orbitron';
-timer.style.fontSize = '72px';
-
-function timeTick() {
-	var s = (Date.now() - epoch) / 1000,
-		seconds = Math.floor(s % 60),
-		minutes = Math.floor(s / 60);
-	timer.innerText = minutes + ':' + seconds;
-
-    if(s > timerOut)
-		btnNext.click();
-	else if(s > timerWarn)
-		timer.style.color = 'red';
-	
-
-}
-</script>

@@ -8,16 +8,14 @@ var Logic = require('../alg/staticLogic'),
     QuestionFactory = Logic.Question;
 
 router.get('/', (req, res) => {
-    var available_topics = TestFactory.loadQuiz('Java.quiz');
+    var available_topics = TestFactory.loadQuiz('Java.quiz'); // load titles only
     res.render('test/test_home', {available_topics});
 });
 
 router.post('/setTestParams', (req, res) => {
-
-    var t = TestFactory.init('Java Sample Exam', req.body.selectedTopics);
+    var t = TestFactory.init('Java Sample Exam', req.body.selectedTopics);  
     // set other parameters too
 
-    
     req.session.test = t;
     res.redirect('/test/go');
 });
@@ -25,28 +23,35 @@ router.post('/setTestParams', (req, res) => {
 router.get('/go', (req, res) =>
 {
     var t = req.session.test;
-    var q = TestFactory.pickQuestion(req.session.test, t.currentDiff);
+    t.currentQuestion = TestFactory.pickQuestion(t);    
 
-    t.Tick = Date.now();
-    t.progress++;
-    t.percent = (t.progress / t.length) * 100;
-    res.render('test/test_live', { t, q });
+    t.metric_tick = Date.now();
+
+    t.percent = (++t.progress / t.totalNumQuestions) * 100;
+    t.currentTopic.percent = (++t.currentTopic.progress / t.currentTopic.totalNumQuestions) * 100;
+
+    
+    res.render('test/test_live', { t });
 });
 
 router.post('/next', (req, res) =>
 {
     var t = req.session.test,
-        c = req.body.choice;
-    TestFactory.answerLastQuestion(t, c); // set user choice
-    var q = TestFactory.getLastQuestion(t);
-    q.time = (Date.now() - t.Tick) / 1000; // log thinking time
+        c = req.body.choice,
+        q = t.currentQuestion;
+        
+    QuestionFactory.setUserAnswer(q, c); // set user choice(s)
+    QuestionFactory.trackMetric(q, Date.now() - t.metric_tick);
 
-    if(q.isCorrect)
-        t.currentDiff = TestFactory.upperDiff(t, t.currentDiff) || t.currentDiff;
-    else 
-        t.currentDiff = TestFactory.lowerDiff(t, t.currentDiff) || t.currentDiff;
+    // if(QuestionFactory.checkUserAnswer(q, c))
+    //     t.currentDiff = TestFactory.upperDiff(t, t.currentDiff) || t.currentDiff;
+    // else 
+    //     t.currentDiff = TestFactory.lowerDiff(t, t.currentDiff) || t.currentDiff;
 
-    if(t.progress == t.length)
+    if(t.currentTopic.progress == t.currentTopic.totalNumQuestions)
+        t.currentTopic = t.topics[++t.currentTopicIndex];
+    
+    if(t.progress == t.totalNumQuestions)
         res.redirect('result');
     else
         res.redirect('go');
@@ -59,11 +64,6 @@ router.get('/result', (req, res)  =>
     var p = req.session.test.picked;
     TestFactory.markTest(t);
     res.render('test/test_result', {picked: p, t:t});
-});
-
-router.get('/gen', (req, res) =>
-{
-    res.render('test/test_gen');
 });
 
 module.exports = router;

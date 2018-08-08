@@ -21,8 +21,6 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 hbs.registerHelper('plusone', i => {return Number(i) + 1});
 
-hbs.registerHelper('topic_title', (t, i) => { return t[i].title});
-
 
 app.use(logger('dev'));
 app.use(express.json());
