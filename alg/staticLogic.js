@@ -38,7 +38,7 @@ function writeTopic(topic)
 
 class Test
 {
-    static init(title, selectedTopic)
+    static init(title, selectedTopics, allTopics, allTopicSizes)
     {
         var obj = {
             testTitle: title,
@@ -57,11 +57,7 @@ class Test
             metric_tick : 0,
         };
 
-        if(!Array.isArray(selectedTopic)) // fix single topic
-            selectedTopic = [selectedTopic];
-        
-        for(var t of selectedTopic)
-            obj.topics.push(Topic.init(t));
+        Topic.parseQuizRequest(obj, selectedTopics, allTopics, allTopicSizes);
 
         for(var x of obj.topics)
             obj.totalNumQuestions += x.totalNumQuestions;
@@ -72,16 +68,24 @@ class Test
 
     static loadQuiz(subject) //.quiz
     {
-        return fs.readFileSync('./alg/Topics/' + subject, 'utf-8').split('\n');
+        var res = [];
+        for (var x of fs.readFileSync('./alg/Topics/' + subject, 'utf-8').split('\n'))
+        {
+            let s = x.split('`');
+            res.push({'topic_title': s[0], 'topic_size': s[1]});
+        }
+        return res;
     }
 
     static pickQuestion(obj)
     {
-        var diff = obj.currentDiff,
-            // t = obj.topics[obj.currentTopicIndex];
-            t = obj.currentTopic;
+        var t = obj.currentTopic;
 
-        if (!t.level[diff]) return false;
+        if(t.level[obj.currentDiff] === undefined || t.level[obj.currentDiff].length === 0) Topic.upperDiff(obj);
+        if(t.level[obj.currentDiff] === undefined || t.level[obj.currentDiff].length === 0) Topic.lowerDiff(obj);
+        if(t.level[obj.currentDiff] === undefined || t.level[obj.currentDiff].length === 0) return false;
+
+        var diff = obj.currentDiff;
 
         var pos = rndUnfrm(t.level[diff].length);
         t.pickedQuestions.push(t.level[diff][pos]);
@@ -103,25 +107,26 @@ class Test
     static answerLastQuestion(obj, answer)
     {
         var q = obj.currentQuestion;
-        q.isCorrect = Question.checkUserAnswer(q, q.userAns);
+        q.isCorrect = Question.checkUserAnswer(q, q.userAnswer);
     }
 }
 
 class Topic
 {
-    static init(topic)
+    static init(topic, totalNumQuestions)
     {
 
         var obj = {
             level: [],
             pickedQuestions: [],
             progress: 0,
-            totalNumQuestions: 0,
-            percent :0
+            totalNumQuestions: totalNumQuestions,
+            percent :0,
+            successRate: 0
         }
         obj = {...obj, ...Topic.loadTopic(topic)}; // combine existing attributes
         obj.level = Topic.stratify(obj);
-        obj.totalNumQuestions = obj.questions.length;
+        // obj.totalNumQuestions = obj.questions.length;
         obj.percent = (obj.progress / obj.totalNumQuestions) * 100;
         return obj;
     }
@@ -129,6 +134,20 @@ class Topic
     static loadTopic(topicTitle)
     {
         return readJSON(topicPath + topicTitle + '.json');
+    }
+
+    static parseQuizRequest(t, selectedTopics, allTopics, allTopicSizes)
+    {
+        if(!Array.isArray(selectedTopics)) // fix single topic
+            selectedTopics = [selectedTopics];
+
+        for(var i = 0;i < selectedTopics.length; i++)
+            for(var j = i; j < allTopics.length; j++)
+                if(selectedTopics[i] == allTopics[j])
+                {
+                    t.topics.push(Topic.init(selectedTopics[i], allTopicSizes[j]));
+                    break;
+                }
     }
 
     static stratify(topic) {
@@ -141,20 +160,24 @@ class Topic
         return level;
     }
 
-    static upperDiff(obj, diff)
+    static upperDiff(obj)
     {
-        while(!obj.level[++diff])
-            if(diff > obj.level.length)
+        var t = obj.currentTopic;
+        while(!t.level[++obj.currentDiff])
+            if(obj.currentDiff > t.level.length)
                 return false;
-        return diff;
+        return true;
+        // return diff;
      }
 
      static lowerDiff(obj, diff)
-     {         
-         while(!obj.level[--diff])
-             if(diff < 0)
+     {
+        var t = obj.currentTopic;
+         while(!obj.level[--obj.currentDiff])
+             if(obj.currentDiff < 0)
                  return false;
-         return diff;
+        return true;
+        //  return diff;
       }
 }
 
@@ -168,16 +191,23 @@ class Question
         };
     }
 
+    static getUserAnswer(obj)
+    {
+        return obj.userAnswer[obj.userAnswer.length - 1];
+    }
+
     static setUserAnswer(obj, answer)
     {
-        obj.userAnswer = answer;
+        if(obj.userAnswer === undefined) obj.userAnswer = [];
+        if(!Array.isArray(answer)) answer = [answer];
+        obj.userAnswer.push(answer);
     }
 
     static checkUserAnswer(obj)
     {
         var correctAnswer = obj.correctAns,
-            answer = obj.userAnswer;
-        if(!Array.isArray(answer)) answer = [answer];
+            answer = this.getUserAnswer(obj);
+            console.log(correctAnswer);
         for(var a of answer)
             if(correctAnswer.indexOf(a) == -1)
                 return false;
@@ -187,18 +217,13 @@ class Question
 
     static trackMetric(obj, duration)
     {
-        var q = obj.currentQuestion;
-
-        if(q.metric_timeSpent === undefined)
+        if(obj.metric_timeSpent === undefined)
         {
-            q.metric_timeSpent.push(duration);
-            q.metric_pickCount++;
+            obj.metric_timeSpent = [];
+            obj.metric_pickCount = 0;
         }
-        else 
-        {
-            q.metric_timeSpent = [];
-            q.metric_pickCount = 1;
-        }
+        obj.metric_timeSpent.push(duration);
+        obj.metric_pickCount++;
     }
 
     static avgTimeSpent(obj)

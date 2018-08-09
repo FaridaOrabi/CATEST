@@ -8,12 +8,16 @@ var Logic = require('../alg/staticLogic'),
     QuestionFactory = Logic.Question;
 
 router.get('/', (req, res) => {
-    var available_topics = TestFactory.loadQuiz('Java.quiz'); // load titles only
-    res.render('test/test_home', {available_topics});
+    var available_topics = TestFactory.loadQuiz('Java.quiz'); // load titles & topicsize only
+    req.session.available_topics = available_topics;
+    res.render('test/test_home', {available_topics}); // array of {topic_title & topic_size}
 });
 
 router.post('/setTestParams', (req, res) => {
-    var t = TestFactory.init('Java Sample Exam', req.body.selectedTopics);  
+    var t = TestFactory.init('Java Sample Exam',
+                            req.body.selectedTopics,
+                            req.session.available_topics.map(x => x['topic_title']),
+                            req.body.topicSize);
     // set other parameters too
 
     req.session.test = t;
@@ -23,7 +27,7 @@ router.post('/setTestParams', (req, res) => {
 router.get('/go', (req, res) =>
 {
     var t = req.session.test;
-    t.currentQuestion = TestFactory.pickQuestion(t);    
+    t.currentQuestion = TestFactory.pickQuestion(t);
 
     t.metric_tick = Date.now();
 

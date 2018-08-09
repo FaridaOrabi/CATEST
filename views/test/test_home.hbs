@@ -2,18 +2,19 @@
     <h1>Start your test</h1>
     <form action="/test/setTestParams" method="post">
         <div class="form-grow row">
-            <label for="testdiff" class="col-sm-2 col-form-label">Number of Questions:</label>
-            <input type="range" class="custom-range" id="testlength" name="testlength" min="1" max="7" style="width: 25%">
-        </div>
-        <div class="form-grow row">
             <label for="testdiff" class="col-sm-2 col-form-label">Difficulty:</label>
             <input type="range" class="custom-range" id="testdiff" name="testdiff" min="1" max="4" style="width: 25%">
         </div>
 
         {{#each available_topics}}
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="{{this}}" id="selectedTopics" name="selectedTopics">
-            <label class="form-check-label" for="selectedTopics">{{this}}</label>
+            <div class="form-grow row">
+                <div class="col-sm-6">
+                    <input class="form-check-input" type="checkbox" value="{{this.topic_title}}" id="selectedTopics" name="selectedTopics">
+                    <label class="form-check-label" for="selectedTopics">{{this.topic_title}}</label>
+                </div>
+            <input type="range" class="custom-range" id="topicSize" name="topicSize" value="5" min="1" max="{{this.topic_size}}" style="width: 20%">
+            </div>
         </div>
         {{/each}}
 
