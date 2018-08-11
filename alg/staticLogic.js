@@ -97,6 +97,13 @@ class Test
         t.pickedQuestions.push(t.level[diff][pos]);
         t.level[diff].splice(pos, 1);
 
+        obj.currentQuestion = t.pickedQuestions[t.pickedQuestions.length - 1];
+        // return t.pickedQuestions[t.pickedQuestions.length - 1];
+    }
+
+    static getCurrentQuestion(obj)
+    {
+        var t = obj.currentTopic;
         return t.pickedQuestions[t.pickedQuestions.length - 1];
     }
 
@@ -240,7 +247,7 @@ class Question
     {
         if(obj.userAnswer === undefined) obj.userAnswer = [];
         if(!Array.isArray(answer)) answer = [answer];
-        obj.userAnswer.push(answer);
+        obj.userAnswer.push(answer);    
     }
 
     static isUserAnswerCorrect(obj)

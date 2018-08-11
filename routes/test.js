@@ -27,11 +27,10 @@ router.post('/setTestParams', (req, res) => {
 router.get('/go', (req, res) =>
 {
     var t = req.session.test;
-    t.currentQuestion = TestFactory.pickQuestion(t);
+    TestFactory.pickQuestion(t);
 
     t.metric_tick = Date.now();
 
-    
 
     t.percent = (++t.progress / t.totalNumQuestions) * 100;
     t.currentTopic.percent = (++t.currentTopic.progress / t.currentTopic.totalNumQuestions) * 100;
@@ -47,6 +46,8 @@ router.post('/next', (req, res) =>
         
     QuestionFactory.setUserAnswer(q, c); // set user choice(s)
     QuestionFactory.trackMetric(q, Date.now() - t.metric_tick);
+    
+    t.currentTopic.pickedQuestions[t.currentTopic.pickedQuestions.length - 1] = q; // reference fix
 
     // if(QuestionFactory.checkUserAnswer(q, c)) // isUserAnswerCorrect
     //     t.currentDiff = TestFactory.upperDiff(t, t.currentDiff) || t.currentDiff;
@@ -54,7 +55,10 @@ router.post('/next', (req, res) =>
     //     t.currentDiff = TestFactory.lowerDiff(t, t.currentDiff) || t.currentDiff;
 
     if(t.currentTopic.progress == t.currentTopic.totalNumQuestions)
+    {
+        t.topics[t.currentTopicIndex] = t.currentTopic; // currentTopic doesnt seems like a reference
         t.currentTopic = t.topics[++t.currentTopicIndex];
+    }
     
     if(t.progress == t.totalNumQuestions)
         res.redirect('result');
@@ -66,9 +70,9 @@ router.post('/next', (req, res) =>
 router.get('/result', (req, res)  =>
 {
     var t = req.session.test;
-    TestFactory.markTest(t);
+    // TestFactory.markTest(t);
 
-    var chart = TestFactory.graphChart(t);
+    // var chart = TestFactory.graphChart(t);
     res.send(t);
 
     // res.render('test/test_result', { t: t, chart: chart});
