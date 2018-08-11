@@ -31,10 +31,11 @@ router.get('/go', (req, res) =>
 
     t.metric_tick = Date.now();
 
+    
+
     t.percent = (++t.progress / t.totalNumQuestions) * 100;
     t.currentTopic.percent = (++t.currentTopic.progress / t.currentTopic.totalNumQuestions) * 100;
 
-    
     res.render('test/test_live', { t });
 });
 
@@ -47,7 +48,7 @@ router.post('/next', (req, res) =>
     QuestionFactory.setUserAnswer(q, c); // set user choice(s)
     QuestionFactory.trackMetric(q, Date.now() - t.metric_tick);
 
-    // if(QuestionFactory.checkUserAnswer(q, c))
+    // if(QuestionFactory.checkUserAnswer(q, c)) // isUserAnswerCorrect
     //     t.currentDiff = TestFactory.upperDiff(t, t.currentDiff) || t.currentDiff;
     // else 
     //     t.currentDiff = TestFactory.lowerDiff(t, t.currentDiff) || t.currentDiff;
@@ -65,9 +66,12 @@ router.post('/next', (req, res) =>
 router.get('/result', (req, res)  =>
 {
     var t = req.session.test;
-    var p = req.session.test.picked;
     TestFactory.markTest(t);
-    res.render('test/test_result', {picked: p, t:t});
+
+    var chart = TestFactory.graphChart(t);
+    res.send(t);
+
+    // res.render('test/test_result', { t: t, chart: chart});
 });
 
 module.exports = router;

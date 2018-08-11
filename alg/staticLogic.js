@@ -20,6 +20,12 @@ function shuffle(array) {
     return array;
 }
 
+function isArrEmpty(arr, diff)
+{
+    // return arr[diff] == undefined || arr[diff].length == 0;
+    return !Array.isArray(arr[diff]) || !arr[diff].length;
+}
+
 function readJSON(filename)
 {    
     // return require(filename);
@@ -81,9 +87,9 @@ class Test
     {
         var t = obj.currentTopic;
 
-        if(t.level[obj.currentDiff] === undefined || t.level[obj.currentDiff].length === 0) Topic.upperDiff(obj);
-        if(t.level[obj.currentDiff] === undefined || t.level[obj.currentDiff].length === 0) Topic.lowerDiff(obj);
-        if(t.level[obj.currentDiff] === undefined || t.level[obj.currentDiff].length === 0) return false;
+        if(isArrEmpty(t.level, obj.currentDiff)) Topic.lowerDiff(obj);
+        if(isArrEmpty(t.level, obj.currentDiff)) Topic.upperDiff(obj);
+        // if(isArrEmpty(t.level, obj.currentDiff)) return false;
 
         var diff = obj.currentDiff;
 
@@ -104,10 +110,47 @@ class Test
             
     }
 
-    static answerLastQuestion(obj, answer)
+    static answerLastQuestion(obj, answer) // rm this
     {
         var q = obj.currentQuestion;
-        q.isCorrect = Question.checkUserAnswer(q, q.userAnswer);
+        q.isCorrect = Question.isUserAnswerCorrect(q, q.userAnswer);
+    }
+
+    static markTest(obj)
+    {
+        for(var topic of obj.topics)
+            for(var question of topic.pickedQuestions)
+            {
+                question.time = Question.getTimeSpent(question);
+                if(Question.isUserAnswerCorrect(question))
+                {
+                    topic.metric_correctQ++;
+                    question.metric_correctCount++;
+                    question.isCorrect = true;
+                }
+                else 
+                    topic.metric_wrongQ++; // question.isCorrect is false by default
+            }
+    }
+
+    static graphChart(obj)
+    {
+        var res  = {
+            titles :[],
+            correctArr:[],
+            wrongArr:[]}
+        
+        for(var topic of obj.topics)
+        {
+            res.titles.push('"' + topic.title + '"');
+            res.correctArr.push(topic.metric_correctQ);
+            res.wrongArr.push(topic.metric_wrongQ);
+        }
+
+        res.correctArr = res.correctArr.toString();
+        res.wrongArr = res.wrongArr.toString();
+        res.titles = res.titles.toString();
+        return res;        
     }
 }
 
@@ -122,7 +165,9 @@ class Topic
             progress: 0,
             totalNumQuestions: totalNumQuestions,
             percent :0,
-            successRate: 0
+            successRate: 0,
+            metric_correctQ: 0,
+            metric_wrongQ: 0
         }
         obj = {...obj, ...Topic.loadTopic(topic)}; // combine existing attributes
         obj.level = Topic.stratify(obj);
@@ -145,7 +190,7 @@ class Topic
             for(var j = i; j < allTopics.length; j++)
                 if(selectedTopics[i] == allTopics[j])
                 {
-                    t.topics.push(Topic.init(selectedTopics[i], allTopicSizes[j]));
+                    t.topics.push(Topic.init(selectedTopics[i], Number(allTopicSizes[j])));
                     break;
                 }
     }
@@ -163,22 +208,14 @@ class Topic
     static upperDiff(obj)
     {
         var t = obj.currentTopic;
-        while(!t.level[++obj.currentDiff])
-            if(obj.currentDiff > t.level.length)
-                return false;
-        return true;
-        // return diff;
+        while(isArrEmpty(t.level, ++obj.currentDiff) && obj.currentDiff < t.level.length);
      }
 
-     static lowerDiff(obj, diff)
-     {
+    static lowerDiff(obj)
+    {
         var t = obj.currentTopic;
-         while(!obj.level[--obj.currentDiff])
-             if(obj.currentDiff < 0)
-                 return false;
-        return true;
-        //  return diff;
-      }
+         while(isArrEmpty(t.level, --obj.currentDiff) && obj.currentDiff > 0);
+    }
 }
 
 class Question
@@ -186,8 +223,11 @@ class Question
     static init()
     {
         var obj = {
+            time: 0,
+            isCorrect : false,
             metric_pickCount: 0,
             metric_timeSpent: [],
+            metric_correctCount: 0
         };
     }
 
@@ -203,16 +243,21 @@ class Question
         obj.userAnswer.push(answer);
     }
 
-    static checkUserAnswer(obj)
+    static isUserAnswerCorrect(obj)
     {
         var correctAnswer = obj.correctAns,
             answer = this.getUserAnswer(obj);
-            console.log(correctAnswer);
+            // console.log(correctAnswer);
         for(var a of answer)
             if(correctAnswer.indexOf(a) == -1)
                 return false;
 
         return true;
+    }
+
+    static getTimeSpent(obj)
+    {
+        return obj.metric_timeSpent[obj.metric_timeSpent.length - 1] || false;
     }
 
     static trackMetric(obj, duration)

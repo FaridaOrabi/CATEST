@@ -7,8 +7,7 @@
         <i class="fas fa-check"></i>
         {{else}}
         <i class="fas fa-times-circle"></i>
-        {{/if}}
-        [{{this.time}} Seconds]
+        {{/if}} [{{this.time}} Seconds]
     </p>
     {{#unless this.isCorrect}}
     <p>
@@ -24,4 +23,56 @@
     </div>
     {{/unless}}
     <hr> {{/each}}
+
+
+    <div class="chart-container" style="position: absolute; height:40vh; width:80vw">
+        <canvas id="myChart"></canvas>
+    </div>
+
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+
+<script>
+    var ctx = document.getElementById("myChart");
+
+    var CorrectCount = [ {{ chart.correctArr }} ],
+        WrongCount = [ {{ chart.wrongArr}} ],
+        TopicTitles = [ {{{ chart.titles }}} ];
+
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: TopicTitles,
+            datasets: [{
+                    label: '# of Correct',
+                    backgroundColor: 'rgba(75, 192, 192, 0.4)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    data: CorrectCount,
+                    borderWidth: 1
+                },
+                {
+                    label: '# of Incorrect',
+                    backgroundColor: 'rgba(255, 99, 132, 0.4)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    data: WrongCount,
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                        stacked: true
+                    }
+                ],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
+                    stacked: true
+                }]
+            }
+        }
+    });
+</script>
