@@ -18,10 +18,12 @@ router.post('/setTestParams', (req, res) => {
                             req.body.selectedTopics,
                             req.session.available_topics.map(x => x['topic_title']),
                             req.body.topicSize);
+                            
     // set other parameters too
-
+    t.currentDiff = req.body.testdiff;
     t.param_timeWarn = req.body.timewarn;
     t.param_timeOut = req.body.timeout;
+    t.param_threshold = req.body.threshold;
 
     req.session.test = t;
     res.redirect('/test/go');

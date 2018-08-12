@@ -61,6 +61,7 @@ class Test
             param_minDifficulty : 1,
             param_maxDifficulty : 4,
             metric_tick : 0,
+            metric_correct: 0
         };
 
         Topic.parseQuizRequest(obj, selectedTopics, allTopics, allTopicSizes);
@@ -116,6 +117,21 @@ class Test
         return true;
             
     }
+    
+    // static markQuestion(obj)
+    // {
+    //     var question = obj.currentQuestion;
+    //     question.time = Question.getTimeSpent(question);
+    //     if(Question.isUserAnswerCorrect(question))
+    //     {
+    //         obj.metric_correct++;
+    //         topic.metric_correctQ++;
+    //         question.metric_correctCount++;
+    //         question.isCorrect = true;
+    //     }
+    //     else
+            
+    // }
 
     static markTest(obj)
     {
@@ -125,6 +141,7 @@ class Test
                 question.time = Question.getTimeSpent(question);
                 if(Question.isUserAnswerCorrect(question))
                 {
+                    obj.metric_correct++;
                     topic.metric_correctQ++;
                     question.metric_correctCount++;
                     question.isCorrect = true;
@@ -268,7 +285,7 @@ class Question
             obj.metric_timeSpent = [];
             obj.metric_pickCount = 0;
         }
-        obj.metric_timeSpent.push(duration);
+        obj.metric_timeSpent.push(duration / 1000); // convert to seconds
         obj.metric_pickCount++;
     }
 
