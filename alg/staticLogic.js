@@ -117,12 +117,6 @@ class Test
             
     }
 
-    static answerLastQuestion(obj, answer) // rm this
-    {
-        var q = obj.currentQuestion;
-        q.isCorrect = Question.isUserAnswerCorrect(q, q.userAnswer);
-    }
-
     static markTest(obj)
     {
         for(var topic of obj.topics)

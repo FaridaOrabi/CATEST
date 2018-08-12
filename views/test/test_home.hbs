@@ -1,24 +1,49 @@
 <div class="container">
     <h1>Start your test</h1>
     <form action="/test/setTestParams" method="post">
-        <div class="form-grow row">
-            <label for="testdiff" class="col-sm-2 col-form-label">Difficulty:</label>
-            <input type="range" class="custom-range" id="testdiff" name="testdiff" min="1" max="4" style="width: 25%">
+
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="form-grow row">
+                    <label for="testdiff" class="col-sm-2 col-form-label">Difficulty:</label>
+                    1<input type="range" class="custom-range" id="testdiff" name="testdiff" min="1" max="4" style="width: 25%">4
+                </div>
+
+                <div class="form-grow row">
+                    <label for="threshold" class="col-sm-2 col-form-label">Threshold:</label>
+                    <input type="range" class="custom-range" id="threshold" name="threshold" min="10" max="100" step="5" style="width: 25%">100%
+                </div>
+
+                <div class="form-grow row">
+                    <label for="timewarn" class="col-sm-2 col-form-label">Time Warn:</label>
+                    5<input type="range" class="custom-range" id="timewarn" name="timewarn" min="5" max="60" step="5" style="width: 25%">60
+                </div>
+
+                <div class="form-grow row">
+                    <label for="timeout" class="col-sm-2 col-form-label">Time Out:</label>
+                    5<input type="range" class="custom-range" id="timeout" name="timeout" min="5" max="60" step="5" style="width: 25%">60
+                </div>
+
+
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-outline-primary btn-block" type="submit" style="margin-top: 3rem">START</button>
+            </div>
         </div>
 
         {{#each available_topics}}
         <div class="form-check">
             <div class="form-grow row">
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <input class="form-check-input" type="checkbox" value="{{this.topic_title}}" id="selectedTopics" name="selectedTopics">
                     <label class="form-check-label" for="selectedTopics">{{this.topic_title}}</label>
                 </div>
-            <input type="range" class="custom-range" id="topicSize" name="topicSize" value="5" min="1" max="{{this.topic_size}}" style="width: 20%">
+                1
+                <input type="range" class="custom-range" id="topicSize" name="topicSize" value="5" min="1" max="{{this.topic_size}}"
+                    style="width: 20%">{{this.topic_size}}
             </div>
         </div>
         {{/each}}
 
-
-        <button class="col-sm-5 btn btn-outline-primary btn-block" type="submit" style="margin-top: 3rem">START</button>
     </form>
 </div>

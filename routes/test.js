@@ -20,6 +20,9 @@ router.post('/setTestParams', (req, res) => {
                             req.body.topicSize);
     // set other parameters too
 
+    t.param_timeWarn = req.body.timewarn;
+    t.param_timeOut = req.body.timeout;
+
     req.session.test = t;
     res.redirect('/test/go');
 });
@@ -70,12 +73,12 @@ router.post('/next', (req, res) =>
 router.get('/result', (req, res)  =>
 {
     var t = req.session.test;
-    // TestFactory.markTest(t);
+    TestFactory.markTest(t);
 
-    // var chart = TestFactory.graphChart(t);
-    res.send(t);
+    var chart = TestFactory.graphChart(t);
 
-    // res.render('test/test_result', { t: t, chart: chart});
+
+    res.render('test/test_result', { t: t, chart: chart});
 });
 
 module.exports = router;
