@@ -1,0 +1,13 @@
+{{#unless question.isCorrect}}
+    <p>
+        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExplain{{topicIndex}}{{questionIndex}}"
+            aria-expanded="false" aria-controls="collapseExplain{{topicIndex}}{{questionIndex}}">
+            Explain
+        </button>
+    </p>
+    <div class="collapse" id="collapseExplain{{topicIndex}}{{questionIndex}}">
+        <div class="card card-body">
+            {{question.explain}}
+        </div>
+    </div>
+{{/unless}}

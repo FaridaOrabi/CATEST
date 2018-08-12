@@ -6,35 +6,18 @@
     <h2>SCORE {{t.metric_correct}} / {{t.totalNumQuestions}}</h2>
     {{#each t.topics as |topic topicIndex|}}
     <h2>{{topic.title}}</h2>
-    <hr>
-    {{#each topic.pickedQuestions as |question questionIndex|}}
+    <hr> {{#each topic.pickedQuestions as |question questionIndex|}}
 
-    <p>{{plusone questionIndex}}. {{question.statement}}
-        {{#if question.isCorrect}}
+    <p>{{plusone questionIndex}}. {{question.statement}} {{#if question.isCorrect}}
         <i class="fas fa-check"></i>
         {{else}}
         <i class="fas fa-times-circle"></i>
         {{/if}} [ {{question.time}} Seconds]
     </p>
 
-    {{#unless question.isCorrect}}
-    <p>
-        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExplain{{topicIndex}}{{questionIndex}}" aria-expanded="false" aria-controls="collapseExplain{{topicIndex}}{{questionIndex}}">
-            Explain
-        </button>
-    </p>
-    <div class="collapse" id="collapseExplain{{topicIndex}}{{questionIndex}}">
-        <div class="card card-body">
-            {{question.explain}}
-        </div>
-    </div>
-    {{/unless}}
+    {{> test_result/explain topicIndex=topicIndex questionIndex=questionIndex question=question}}
 
-
-
-
-    {{/each}}
-    {{/each}}
+     {{/each}} {{/each}}
 
 
     <div class="chart-container" style="position: absolute; height:20vh; width:60vw">
