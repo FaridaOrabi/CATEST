@@ -1,6 +1,7 @@
 var fs = require('fs');
+var fspath = require('path');
 
-const topicPath = './alg/Topics/Java/';
+const topicPath = './alg/Topics/';
 
 function rndUnfrm(n) {
     return ~~(Math.random() * n);
@@ -34,7 +35,10 @@ function readJSON(filename)
 
 function writeJSON(path, data)
 {
-    fs.writeFile(path, JSON.stringify(data));
+    var dirname = fspath.dirname(path);
+    if(!fs.existsSync(dirname))
+        fs.mkdirSync(dirname);
+    fs.writeFile(path, JSON.stringify(data), (error) => {/* ignore errors*/});
 }
 
 function writeTopic(topic)
@@ -44,7 +48,7 @@ function writeTopic(topic)
 
 class Test
 {
-    static init(title, selectedTopics, allTopics, allTopicSizes)
+    static init(title, selectedTopics, allTopics, allTopicSizes, subj)
     {
         var obj = {
             testTitle: title,
@@ -64,7 +68,7 @@ class Test
             metric_correct: 0
         };
 
-        Topic.parseQuizRequest(obj, selectedTopics, allTopics, allTopicSizes);
+        Topic.parseQuizRequest(obj, selectedTopics, allTopics, allTopicSizes, subj);
 
         for(var x of obj.topics)
             obj.totalNumQuestions += x.totalNumQuestions;
@@ -73,13 +77,23 @@ class Test
         return obj;
     }
 
-    static loadQuiz(subject) //.quiz
+    static loadAllSubjects() // a bit messy
     {
-        var res = [];
-        for (var x of fs.readFileSync('./alg/Topics/' + subject, 'utf-8').split('\n'))
+        var res = {}
+        const { readdirSync, statSync } = require('fs');
+        const { join } = require('path');
+        const dirs = p => readdirSync(p).filter(f => statSync(join(p, f)).isDirectory());
+        const jsons = p => readdirSync(p).filter(f => statSync(join(p, f)));
+        for(var x of dirs('./alg/Topics/'))
         {
-            let s = x.split('`');
-            res.push({'topic_title': s[0], 'topic_size': s[1]});
+            res[x] = [];
+            for(var y of jsons('./alg/Topics/' + x))
+            {
+                var a = y.split('.json')[0];
+                var z = readJSON('./alg/Topics/' + x + '/' + y);
+                z = z.questions.length;
+                res[x].push({topic_title: a, topic_size: z});
+            }
         }
         return res;
     }
@@ -174,7 +188,7 @@ class Test
 
 class Topic
 {
-    static init(topic, totalNumQuestions)
+    static init(topic, totalNumQuestions, subj)
     {
 
         var obj = {
@@ -187,19 +201,19 @@ class Topic
             metric_correctQ: 0,
             metric_wrongQ: 0
         }
-        obj = {...obj, ...Topic.loadTopic(topic)}; // combine existing attributes
+        obj = {...obj, ...Topic.loadTopic(topic, subj)}; // combine existing attributes
         obj.level = Topic.stratify(obj);
         // obj.totalNumQuestions = obj.questions.length;
         obj.percent = (obj.progress / obj.totalNumQuestions) * 100;
         return obj;
     }
 
-    static loadTopic(topicTitle)
+    static loadTopic(topicTitle, subj)
     {
-        return readJSON(topicPath + topicTitle + '.json');
+        return readJSON(topicPath + subj + '/' + topicTitle + '.json');
     }
 
-    static parseQuizRequest(t, selectedTopics, allTopics, allTopicSizes)
+    static parseQuizRequest(t, selectedTopics, allTopics, allTopicSizes, subj)
     {
         if(!Array.isArray(selectedTopics)) // fix single topic
             selectedTopics = [selectedTopics];
@@ -208,7 +222,7 @@ class Topic
             for(var j = i; j < allTopics.length; j++)
                 if(selectedTopics[i] == allTopics[j])
                 {
-                    t.topics.push(Topic.init(selectedTopics[i], Number(allTopicSizes[j])));
+                    t.topics.push(Topic.init(selectedTopics[i], Number(allTopicSizes[j]), subj));
                     break;
                 }
     }
@@ -298,4 +312,4 @@ class Question
     }
 }
 
-module.exports = {Test, Topic, Question};
+module.exports = {Test, Topic, Question, writeJSON};

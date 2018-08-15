@@ -27,11 +27,43 @@
 
             </div>
             <div class="col-sm-4">
+                {{!-- <button type="button" class="btn btn-outline-secondary btn-block" id="addtopicbtn" onclick="addTopic()">Add topics</button> --}}
+
+                {{!-- <select class="form-control" name="selectedSubject" id="selectedSubject" onchange="changeSubject(this.value)">
+                    <option disabled selected value>Select a subject from here</option>
+                    <option value="java">java</option>
+                    <option value="c++">c++</option> --}}
+
+
+
+                <select class="form-control" name="selectedSubject" id="selectedSubject" onchange="changeSubject(this.value)">
+
+                    <option disabled selected value>Select a subject from here</option>
+                    {{#each s}}
+                        <option value="{{@key}}">{{@key}}</option>
+                    {{/each}}
+
+                </select>
+
+
                 <button class="btn btn-outline-primary btn-block" type="submit" style="margin-top: 3rem">START</button>
             </div>
         </div>
 
-        {{#each available_topics}}
+        <div id="topicsdiv">
+
+        </div>
+
+    </form>
+</div>
+
+<script>
+    var topichtml = {}
+        {{#each s as |arr subj|}}
+
+        topichtml['{{subj}}'] = `
+
+        {{#each arr}}
         <div class="form-check">
             <div class="form-grow row">
                 <div class="col-sm-8">
@@ -44,6 +76,14 @@
             </div>
         </div>
         {{/each}}
+        `;
+        {{/each}}
 
-    </form>
-</div>
+    
+
+    function changeSubject(s)
+    {
+        topicsdiv.innerHTML = topichtml[s];
+    }
+
+</script>

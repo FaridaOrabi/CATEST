@@ -7,17 +7,22 @@ var Logic = require('../alg/staticLogic'),
     TopicFactory = Logic.Topic,
     QuestionFactory = Logic.Question;
 
+
+
 router.get('/', (req, res) => {
-    var available_topics = TestFactory.loadQuiz('Java.quiz'); // load titles & topicsize only
-    req.session.available_topics = available_topics;
-    res.render('test/test_home', {available_topics}); // array of {topic_title & topic_size}
+    var s = TestFactory.loadAllSubjects();
+    req.session.subjects = s;
+    res.render('test/test_home', {s});
 });
 
 router.post('/setTestParams', (req, res) => {
-    var t = TestFactory.init('Java Sample Exam',
+    var subj = req.body.selectedSubject;
+    var t = TestFactory.init(
+                            subj + 'Sample Exam',
                             req.body.selectedTopics,
-                            req.session.available_topics.map(x => x['topic_title']),
-                            req.body.topicSize);
+                            // req.session.available_topics.map(x => x['topic_title']),
+                            req.session.subjects[subj].map(x => x['topic_title']),
+                            req.body.topicSize, subj);
                             
     // set other parameters too
     t.currentDiff = req.body.testdiff;
@@ -135,7 +140,7 @@ router.post('/gen_next', (req, res) =>
     
     req.session.f.questions.push(q);
        
-    console.log(f);
+    // console.log(f);
     if(f.questiondone++ < f.questionnum)
         res.redirect('/test/gen_live');
     else 
@@ -146,6 +151,17 @@ router.post('/gen_next', (req, res) =>
 router.get('/test_welcome', (req, res) =>
 {
     res.render('test/test_welcome');
+});
+
+router.get('/gen_done', (req, res) =>
+{
+    var f = req.session.f;
+
+    var topic = {};
+    topic.title = f.topic;
+    topic.questions = f.questions;
+    Logic.writeJSON('./alg/Topics/' + f.subject + '/' + topic.title + '.json', topic);
+    res.redirect('/test/test_welcome')
 });
 
 
