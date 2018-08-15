@@ -1,0 +1,124 @@
+<div class="container">
+    <h1>Question {{f.questiondone}} / {{f.questionnum}}</h1>
+    <form action="/test/gen_next" method="post">
+        <div class="form-group">
+            <label for="statement">Statement:</label>
+            <input type="text" class="form-control" id="statement" name="statement" placeholder="Statement goes here">
+            {{!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
+        </div>
+        
+        <div class="form-group">
+            <label for="questiontype">Type:</label>
+            <select class="form-control" onchange="properChoice()" id="questiontype" name="questiontype">
+                <option disabled selected value>Select from here</option>
+                <option>SMCQ</option>
+                <option>MMCQ</option>
+                <option>True/False</option>
+                <option>Complete</option>
+            </select>
+        </div>
+        
+        <div class="form-group" id="choicediv">            
+            {{!-- <button type="button" id="choiceaddbtn" onclick="addChoice()">Add one more choice</button>
+            <input type="text" class="form-control" id="choice" name="choice" placeholder="Choice goes here"> --}}
+        </div>
+
+        <div class="form-group" id="correctdiv">
+            {{!-- <label for="correctAnswer">Correct Answer:</label>
+            <input type="text" class="form-control" id="correctAnswer" name="correctAnswer" placeholder="Correct Answer goes here"> --}}
+        </div>
+
+        <div class="form-group">
+            <input class="form-check-input" type="checkbox" value="marked" id="discriminative" name="discriminative">
+            <label for="discriminative">Discriminative?</label>
+        </div>
+        
+        <div class="form-group">
+            <label for="explain">Explain:</label>
+            <input type="text" class="form-control" id="explain" name="explain" placeholder="Explain goes here">
+        </div>
+        <div class="form-group">
+            <label for="difficulty">Difficulty:</label>
+            1<input type="range" class="custom-range" id="difficulty" name="difficulty" min="1" max="4" style="width: 25%">4
+        </div>
+        <button class="btn btn-outline-primary btn-block" type="submit" style="margin-top: 3rem">Add</button>
+    </form>
+</div>
+
+
+<script>
+
+    function getChoices()
+    {
+        var res = [];
+        for(var x of document.getElementById('choicediv').children)
+            if(x.name == "choice")
+                res.push(x.value);
+        return res;
+    }
+
+    function choicesAsOptions(c)
+    {
+        var html = `<select class="form-control" id="correctAnswer" name="correctAnswer">`;
+        for(var x of c)
+            html += `<option value=` + x + `>` + x + `</option>`;
+        html += `</select>`;
+        return html;
+    }
+
+    function addChoice()
+    {
+        var choicediv = document.getElementById('choicediv');
+        choicediv.innerHTML += `<input type="text" class="form-control" id="choice" name="choice" placeholder="Choice goes here">`
+    }
+    function addKeyword()
+    {
+        var choicediv = document.getElementById('choicediv');
+        choicediv.innerHTML += `<input type="text" class="form-control" id="correctAnswer" name="correctAnswer" placeholder="Keyword goes here">`
+    }
+
+    function addCorrectAns()
+    {
+        var correctdiv = document.getElementById('correctdiv');
+        // correctdiv.innerHTML += `<input type="text" class="form-control" id="correctAnswer" name="correctAnswer" placeholder="Correct Answer goes here">`;
+        correctdiv.innerHTML += choicesAsOptions(getChoices());
+    }
+
+    function properChoice()
+    {
+        var questiontype = document.getElementById('questiontype'),
+            currentSelection = questiontype.value,
+            choicediv = document.getElementById('choicediv'),
+            correctdiv = document.getElementById('correctdiv');
+        switch(currentSelection)
+        {
+            case "SMCQ":
+                correctdiv.innerHTML = `<label for="correctAnswer">Correct Answer:</label></br>` +
+                    `<button type="button" id="correctanswerbtn" class="btn btn-outline-secondary" onclick="addCorrectAns();correctdiv.removeChild(correctanswerbtn)">Add correct Answer</button>`
+                choicediv.innerHTML = `<button type="button" class="btn btn-outline-secondary" id="choiceaddbtn" onclick="addChoice()">Add one more choice</button>`;
+                break;
+            case "MMCQ":
+                correctdiv.innerHTML = `<label for="correctAnswer">Correct Answers:</label></br>` +
+            `<button type="button" class="btn btn-outline-secondary" id="correctanswerbtn" onclick="addCorrectAns()">Add one more correct Answer</button>`;
+                choicediv.innerHTML =
+                `<button type="button" class="btn btn-outline-secondary" id="choiceaddbtn" onclick="addChoice()">Add one more choice</button>`;
+                break;
+            case "True/False":
+                correctdiv.innerHTML = `<label>Correct Answer:</label>` + choicesAsOptions(['True', 'False']);
+                choicediv.innerHTML =
+                `<input type="text" class="form-control" id="choice" name="choice" placeholder="Keyword goes here" value="True" hidden>
+                <input type="text" class="form-control" id="choice" name="choice" placeholder="Keyword goes here" value="False" hidden>`;
+                break;
+            case "Complete":
+                correctdiv.innerHTML = "";
+                choicediv.innerHTML =
+                `<button type="button" class="btn btn-outline-secondary" id="choiceaddbtn" onclick="addKeyword()">Add one more Keyword</button>`;
+                break;
+            default:
+                // should not occur
+                break;
+        }      
+
+    }
+    
+</script>

@@ -83,4 +83,71 @@ router.get('/result', (req, res)  =>
     res.render('test/test_result', { t: t, chart: chart});
 });
 
+router.get('/gen_home', (req, res) =>
+{
+    res.render('test/test_gen_home');
+});
+
+router.post('/gen_param', (req, res) =>
+{
+    var f = {};
+    
+    f.subject = req.body.subjecttitle;
+    f.topic = req.body.topictitle;
+    f.questionnum = Number(req.body.questionnum);
+    f.questiondone = 1;
+    f.questions = [];
+    
+    
+    
+    req.session.f = f;
+    
+    res.redirect('/test/gen_live');
+});
+
+router.get('/gen_live', (req, res) => 
+{
+    var f = req.session.f;
+    res.render('test/test_gen_live', {f});
+});
+
+router.post('/gen_next', (req, res) =>
+{
+    var f = req.session.f;
+    var q = {};
+    
+    q.statement = req.body.statement;
+    q.type = req.body.questiontype;
+    q.explain = req.body.explain;
+    q.discriminative = (req.body.discriminative === 'marked');
+    q.difficulty = Number(req.body.difficulty);
+
+
+    var correctAnswer = req.body.correctAnswer;
+    if(!Array.isArray(correctAnswer)) correctAnswer = [correctAnswer];
+    q.correctAns = req.body.correctAnswer;
+
+    var choices = req.body.choice;
+    if(!Array.isArray(choices)) choices = [choices];
+    q.options = req.body.choice;
+
+    // q.imgURL = req.body.imgURL;
+    
+    req.session.f.questions.push(q);
+       
+    console.log(f);
+    if(f.questiondone++ < f.questionnum)
+        res.redirect('/test/gen_live');
+    else 
+        res.redirect('/test/gen_done');
+    
+});
+
+router.get('/test_welcome', (req, res) =>
+{
+    res.render('test/test_welcome');
+});
+
+
+
 module.exports = router;
